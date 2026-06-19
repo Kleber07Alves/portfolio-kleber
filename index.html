@@ -30,21 +30,74 @@
   <link rel="stylesheet" href="src/css/main.css" />
 </head>
 <body>
+  <!-- Skip link (acessibilidade por teclado) -->
+  <a class="skip-link" href="#hero">Pular para o conteúdo</a>
+
   <!-- ============================ HEADER / NAV ============================ -->
-  <header class="site-header">
+  <header class="site-header" id="top">
     <nav class="navbar container" aria-label="Navegação principal">
-      <a class="navbar__brand" href="#top">Kleber</a>
-      <!-- Links de seção serão adicionados na FASE 2 (Hero) -->
+      <a class="navbar__brand" href="#top">
+        <span class="navbar__avatar" aria-hidden="true">K</span>
+        <span class="navbar__name">Kleber</span>
+      </a>
+
+      <!-- Botão hambúrguer (mobile) -->
+      <button
+        class="navbar__toggle"
+        id="navToggle"
+        type="button"
+        aria-label="Abrir menu"
+        aria-controls="navMenu"
+        aria-expanded="false"
+      >
+        <span class="navbar__toggle-bar"></span>
+        <span class="navbar__toggle-bar"></span>
+        <span class="navbar__toggle-bar"></span>
+      </button>
+
+      <!-- Menu de navegação (vira overlay no mobile) -->
+      <ul class="navbar__menu" id="navMenu" role="list">
+        <li><a class="navbar__link" href="#hero">Início</a></li>
+        <li><a class="navbar__link" href="#atributos">Atributos</a></li>
+        <li><a class="navbar__link" href="#skill-tree">Skill Tree</a></li>
+        <li><a class="navbar__link" href="#projetos">Projetos</a></li>
+        <li><a class="navbar__link" href="#contato">Contato</a></li>
+      </ul>
     </nav>
   </header>
 
   <!-- ================================ MAIN ================================ -->
-  <main id="top">
-    <!-- As seções (Hero, Atributos, Skill Tree, Projetos, Contato)
-         serão construídas a partir da FASE 2. -->
-    <section class="container" aria-label="Conteúdo em construção">
-      <p class="text-muted">Fundação inicializada. 🟢</p>
+  <main>
+    <!-- ============================== HERO ============================== -->
+    <section class="hero" id="hero" aria-labelledby="hero-title">
+      <!-- Camada de fundo: grid cyber + vinheta (decorativa) -->
+      <div class="hero__backdrop" aria-hidden="true"></div>
+
+      <div class="hero__inner container">
+        <p class="hero__eyebrow">
+          <span class="hero__status" aria-hidden="true"></span>
+          PLAYER 01 — ONLINE
+        </p>
+
+        <h1 class="hero__title" id="hero-title">
+          <span class="text-gradient">Kleber</span>
+        </h1>
+
+        <p class="hero__role">Desenvolvedor Front-End &amp; Criador de Interfaces</p>
+
+        <p class="hero__tagline">
+          Transformo lógica em pixels e ideias em experiências.
+          Bem-vindo ao meu mundo — escolha um caminho e vamos jogar.
+        </p>
+
+        <div class="hero__actions">
+          <a class="btn btn--primary" href="#projetos">[ PRESS START ]</a>
+          <a class="btn btn--secondary" href="#contato">Contato</a>
+        </div>
+      </div>
     </section>
+
+    <!-- Próximas seções (Atributos, Skill Tree, Projetos, Contato) — FASE 3+ -->
   </main>
 
   <!-- =============================== FOOTER =============================== -->
