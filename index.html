@@ -97,7 +97,29 @@
       </div>
     </section>
 
-    <!-- Próximas seções (Atributos, Skill Tree, Projetos, Contato) — FASE 3+ -->
+    <!-- ============================ ATRIBUTOS ============================ -->
+    <section class="attributes" id="atributos" aria-labelledby="atributos-title">
+      <div class="container">
+        <header class="section-head">
+          <p class="section-head__eyebrow">// CHARACTER SHEET</p>
+          <h2 class="section-head__title" id="atributos-title">Atributos</h2>
+          <p class="section-head__lead">
+            Minha ficha de personagem — os pilares que definem como penso,
+            trabalho e evoluo. Cada um com suas sub-habilidades desbloqueadas.
+          </p>
+        </header>
+
+        <!-- Grid preenchido dinamicamente por modules/attributes.js -->
+        <div class="attributes__grid grid grid--auto-fit" id="attributesGrid" role="list">
+          <!-- Fallback caso o JS nao carregue -->
+          <noscript>
+            <p class="text-muted">Ative o JavaScript para visualizar os atributos.</p>
+          </noscript>
+        </div>
+      </div>
+    </section>
+
+    <!-- Próximas seções (Skill Tree, Projetos, Contato) — FASE 4+ -->
   </main>
 
   <!-- =============================== FOOTER =============================== -->
