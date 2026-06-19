@@ -1,0 +1,41 @@
+/* ============================================================
+   MAIN.CSS — Orquestrador
+   Importa todas as camadas na ordem de cascata correta:
+   reset -> tokens -> base -> layout -> utilities -> componentes.
+   A ordem importa: tokens antes de tudo que os consome;
+   utilities por último para vencer especificidade quando preciso.
+   ============================================================ */
+
+/* 1. Reset do navegador */
+@import url("./00-reset.css");
+
+/* 2. Tokens (variáveis :root) */
+@import url("./01-tokens.css");
+
+/* 3. Estilos base de elementos */
+@import url("./02-base.css");
+
+/* 4. Layout / estruturas */
+@import url("./03-layout.css");
+
+/* 5. Utilitários */
+@import url("./04-utilities.css");
+
+/* ------------------------------------------------------------
+   COMPONENTES (FASE 2+) — descomentar conforme criados:
+   @import url("./components/navbar.css");
+   @import url("./components/button.css");
+   @import url("./components/card.css");
+   @import url("./components/badge.css");
+   @import url("./components/stat-bar.css");
+   @import url("./components/skill-node.css");
+   ------------------------------------------------------------ */
+
+/* ------------------------------------------------------------
+   SEÇÕES (FASE 2+) — descomentar conforme criadas:
+   @import url("./sections/hero.css");
+   @import url("./sections/attributes.css");
+   @import url("./sections/skill-tree.css");
+   @import url("./sections/projects.css");
+   @import url("./sections/contact.css");
+   ------------------------------------------------------------ */

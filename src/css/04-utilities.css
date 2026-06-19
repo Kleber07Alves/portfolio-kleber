@@ -1,0 +1,64 @@
+/* ============================================================
+   04-UTILITIES.CSS
+   Classes utilitárias de propósito único. Pequenas, compostas.
+   ============================================================ */
+
+/* ---------- Acessibilidade: esconder visualmente, manter p/ leitor de tela ---------- */
+.visually-hidden {
+  position: absolute !important;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* ---------- Skip link (foco de teclado) ---------- */
+.skip-link {
+  position: absolute;
+  left: var(--space-4);
+  top: -100%;
+  z-index: var(--z-modal);
+  background: var(--color-graphite-900);
+  color: var(--color-paper);
+  padding: var(--space-2) var(--space-4);
+  border-radius: var(--radius-md);
+}
+
+.skip-link:focus {
+  top: var(--space-4);
+}
+
+/* ---------- Cores de texto ---------- */
+.text-muted    { color: var(--color-smoke); }
+.text-body     { color: var(--color-ash); }
+.text-strong   { color: var(--color-paper); }
+
+/* ---------- Texto com gradiente neon (hero/destaques) ---------- */
+.text-gradient {
+  background: var(--gradient-hero);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+/* ---------- Glow utilitário ---------- */
+.glow-cyan { box-shadow: var(--glow-cyan); }
+.glow-red  { box-shadow: var(--glow-red); }
+.glow-lime { box-shadow: var(--glow-lime); }
+.glow-gold { box-shadow: var(--glow-gold); }
+
+/* ---------- Alinhamento de texto ---------- */
+.text-center { text-align: center; }
+
+/* ---------- Helpers de espaçamento (margin/padding pontuais) ---------- */
+.mt-0  { margin-top: 0; }
+.mt-4  { margin-top: var(--space-4); }
+.mt-8  { margin-top: var(--space-8); }
+.mb-4  { margin-bottom: var(--space-4); }
+
+/* ---------- Display ---------- */
+.hidden { display: none !important; }
