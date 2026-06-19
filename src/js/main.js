@@ -6,12 +6,14 @@
    ============================================================ */
 
 import { initNavbar } from "./modules/navbar.js";
+import { initAttributes } from "./modules/attributes.js";
 
 const App = {
   init() {
     this.setFooterYear();
     initNavbar();
-    console.log("%c⚡ FASE 2 — Hero inicializado", "color:#39FF14;font-weight:bold;");
+    initAttributes();
+    console.log("%c⚡ FASE 3 — Atributos renderizados", "color:#39FF14;font-weight:bold;");
   },
 
   /** Preenche o ano atual no footer. */
