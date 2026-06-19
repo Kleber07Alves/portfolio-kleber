@@ -1,0 +1,148 @@
+/* ============================================================
+   SECTIONS / HERO.CSS
+   Primeira dobra — "menu inicial do jogo".
+   Layout flex centralizado, background grid cyber + vinheta.
+   ============================================================ */
+
+.hero {
+  position: relative;
+  display: flex;
+  align-items: center;
+  min-height: calc(100svh - 64px); /* desconta a navbar fixa */
+  overflow: hidden;
+  isolation: isolate; /* mantem o backdrop atras do conteudo */
+}
+
+/* ---------- Background: grid cyber + vinheta ---------- */
+.hero__backdrop {
+  position: absolute;
+  inset: 0;
+  z-index: var(--z-bg);
+  background-color: var(--color-void);
+
+  /* Grid cyber: duas camadas de linhas finas */
+  background-image:
+    linear-gradient(rgba(0, 229, 255, 0.06) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0, 229, 255, 0.06) 1px, transparent 1px);
+  background-size: 48px 48px;
+  background-position: center;
+}
+
+/* Vinheta: escurece as bordas para dar profundidade */
+.hero__backdrop::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(
+      ellipse at center,
+      transparent 0%,
+      rgba(5, 5, 7, 0.55) 70%,
+      var(--color-void) 100%
+    );
+}
+
+/* Brilho ambiente sutil (magenta/azul) atras do titulo */
+.hero__backdrop::before {
+  content: "";
+  position: absolute;
+  top: 30%;
+  left: 50%;
+  width: min(600px, 80vw);
+  height: min(600px, 80vw);
+  transform: translate(-50%, -50%);
+  background: radial-gradient(
+    circle,
+    rgba(212, 0, 255, 0.18) 0%,
+    transparent 60%
+  );
+  filter: blur(40px);
+}
+
+/* ---------- Conteudo ---------- */
+.hero__inner {
+  position: relative;
+  z-index: var(--z-content);
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: var(--space-4);
+  padding-block: var(--space-16);
+}
+
+/* Eyebrow / status "online" */
+.hero__eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  margin: 0;
+  font-family: var(--font-mono);
+  font-size: var(--fs-xs);
+  letter-spacing: var(--ls-wide);
+  text-transform: uppercase;
+  color: var(--neon-lime);
+}
+
+.hero__status {
+  width: 8px;
+  height: 8px;
+  border-radius: var(--radius-pill);
+  background-color: var(--neon-lime);
+  box-shadow: var(--glow-lime);
+  animation: hero-blink 1.6s var(--ease-out) infinite;
+}
+
+/* ---------- Titulo com gradiente ---------- */
+.hero__title {
+  margin: 0;
+  font-size: clamp(var(--fs-3xl), 12vw, var(--fs-4xl));
+  line-height: var(--lh-tight);
+}
+
+/* Reforca o glow do gradiente no titulo */
+.hero__title .text-gradient {
+  filter: drop-shadow(0 0 24px rgba(212, 0, 255, 0.35));
+}
+
+.hero__role {
+  margin: 0;
+  font-family: var(--font-heading);
+  font-size: clamp(var(--fs-md), 4vw, var(--fs-xl));
+  color: var(--color-paper);
+  letter-spacing: var(--ls-wide);
+}
+
+.hero__tagline {
+  margin: 0;
+  max-width: 52ch;
+  color: var(--color-ash);
+  font-size: var(--fs-md);
+}
+
+/* ---------- CTAs ---------- */
+.hero__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-4);
+  margin-top: var(--space-4);
+}
+
+/* ---------- Animacoes ---------- */
+@keyframes hero-blink {
+  0%,
+  100% { opacity: 1; }
+  50%  { opacity: 0.35; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero__status {
+    animation: none;
+  }
+}
+
+/* ---------- Responsivo: centraliza em telas maiores se desejar ---------- */
+@media (min-width: 768px) {
+  .hero__inner {
+    gap: var(--space-6);
+  }
+}
