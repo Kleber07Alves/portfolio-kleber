@@ -1,0 +1,200 @@
+/* ============================================================
+   COMPONENTS / NAVBAR.CSS
+   Barra fixa no topo, fundo escuro translucido com blur.
+   Mobile-first: menu vira overlay; desktop: linha horizontal.
+   ============================================================ */
+
+.site-header {
+  position: fixed;
+  inset: 0 0 auto 0;
+  z-index: var(--z-nav);
+  background-color: rgba(10, 10, 15, 0.72); /* --color-abyss translucido */
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border-bottom: 1px solid var(--color-graphite-700);
+}
+
+/* Compensa a navbar fixa para o conteudo nao ficar escondido */
+body {
+  padding-top: 64px;
+}
+
+/* Trava o scroll do body enquanto o overlay mobile esta aberto */
+body.nav-open {
+  overflow: hidden;
+}
+
+/* ---------- Brand / Avatar ---------- */
+.navbar__brand {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-3);
+  color: var(--color-paper);
+}
+
+.navbar__brand:hover {
+  text-shadow: none;
+}
+
+.navbar__avatar {
+  display: grid;
+  place-items: center;
+  width: 36px;
+  height: 36px;
+  border-radius: var(--radius-md);
+  background: var(--gradient-hero);
+  color: var(--color-void);
+  font-family: var(--font-display);
+  font-size: var(--fs-sm);
+  box-shadow: var(--glow-red);
+}
+
+.navbar__name {
+  font-family: var(--font-heading);
+  font-size: var(--fs-md);
+  font-weight: 800;
+  letter-spacing: var(--ls-wide);
+}
+
+/* ---------- Links ---------- */
+.navbar__link {
+  position: relative;
+  color: var(--color-ash);
+  font-family: var(--font-mono);
+  font-size: var(--fs-sm);
+  letter-spacing: var(--ls-wide);
+  text-transform: uppercase;
+}
+
+.navbar__link:hover,
+.navbar__link:focus-visible {
+  color: var(--color-paper);
+  text-shadow: var(--glow-cyan);
+}
+
+/* Sublinhado neon animado */
+.navbar__link::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -4px;
+  width: 0;
+  height: 2px;
+  background: var(--gradient-cyber);
+  transition: width var(--dur-base) var(--ease-out);
+}
+
+.navbar__link:hover::after,
+.navbar__link:focus-visible::after,
+.navbar__link.is-active::after {
+  width: 100%;
+}
+
+/* ---------- Botao hamburger ---------- */
+.navbar__toggle {
+  display: inline-flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 5px;
+  width: 44px;
+  height: 44px;
+  padding: 0 10px;
+  background: transparent;
+  border: 1px solid var(--color-graphite-600);
+  border-radius: var(--radius-md);
+  cursor: pointer;
+}
+
+.navbar__toggle-bar {
+  display: block;
+  height: 2px;
+  width: 100%;
+  background-color: var(--color-paper);
+  border-radius: var(--radius-pill);
+  transition:
+    transform var(--dur-base) var(--ease-out),
+    opacity var(--dur-fast) var(--ease-out);
+}
+
+/* Animacao hamburger -> X (estado aberto) */
+.navbar__toggle[aria-expanded="true"] .navbar__toggle-bar:nth-child(1) {
+  transform: translateY(7px) rotate(45deg);
+}
+.navbar__toggle[aria-expanded="true"] .navbar__toggle-bar:nth-child(2) {
+  opacity: 0;
+}
+.navbar__toggle[aria-expanded="true"] .navbar__toggle-bar:nth-child(3) {
+  transform: translateY(-7px) rotate(-45deg);
+}
+
+/* ============================================================
+   MOBILE-FIRST: menu como overlay (padrao ate 768px)
+   ============================================================ */
+.navbar__menu {
+  position: fixed;
+  inset: 64px 0 0 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-8);
+  margin: 0;
+  padding: var(--space-8);
+  background-color: rgba(5, 5, 7, 0.96); /* --color-void translucido */
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+
+  /* Estado fechado: invisivel e fora de foco */
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(-12px);
+  transition:
+    opacity var(--dur-base) var(--ease-out),
+    transform var(--dur-base) var(--ease-out),
+    visibility 0s linear var(--dur-base);
+}
+
+.navbar__menu.is-open {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+  transition:
+    opacity var(--dur-base) var(--ease-out),
+    transform var(--dur-base) var(--ease-out),
+    visibility 0s;
+}
+
+.navbar__menu .navbar__link {
+  font-size: var(--fs-lg);
+}
+
+/* ============================================================
+   DESKTOP: >= 768px — menu horizontal, sem hamburger
+   ============================================================ */
+@media (min-width: 768px) {
+  .navbar__toggle {
+    display: none;
+  }
+
+  .navbar__menu {
+    position: static;
+    inset: auto;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-end;
+    gap: var(--space-8);
+    padding: 0;
+    background: transparent;
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+
+    /* Sempre visivel no desktop */
+    opacity: 1;
+    visibility: visible;
+    transform: none;
+  }
+
+  .navbar__menu .navbar__link {
+    font-size: var(--fs-sm);
+  }
+}
