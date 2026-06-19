@@ -119,7 +119,41 @@
       </div>
     </section>
 
-    <!-- Próximas seções (Skill Tree, Projetos, Contato) — FASE 4+ -->
+    <!-- ============================ SKILL TREE ============================ -->
+    <section class="skill-tree" id="skill-tree" aria-labelledby="skill-tree-title">
+      <div class="container">
+        <header class="section-head">
+          <p class="section-head__eyebrow">// PROGRESSION MAP</p>
+          <h2 class="section-head__title" id="skill-tree-title">Skill Tree</h2>
+          <p class="section-head__lead">
+            Meu mapa de progressão técnica. Passe o mouse (ou toque) num nó
+            para energizar o caminho até a raiz e ver de onde cada habilidade
+            nasce.
+          </p>
+        </header>
+
+        <!-- Legenda de estados -->
+        <ul class="skill-tree__legend" role="list">
+          <li class="skill-legend skill-legend--mastered">Dominado</li>
+          <li class="skill-legend skill-legend--unlocked">Em evolução</li>
+          <li class="skill-legend skill-legend--locked">A desbloquear</li>
+        </ul>
+
+        <!-- Árvore renderizada dinamicamente por modules/skillTree.js -->
+        <div
+          class="skill-tree__canvas"
+          id="skillCanvas"
+          role="group"
+          aria-label="Árvore de habilidades"
+        >
+          <noscript>
+            <p class="text-muted">Ative o JavaScript para visualizar a skill tree.</p>
+          </noscript>
+        </div>
+      </div>
+    </section>
+
+    <!-- Próximas seções (Projetos, Contato) — FASE 5+ -->
   </main>
 
   <!-- =============================== FOOTER =============================== -->
