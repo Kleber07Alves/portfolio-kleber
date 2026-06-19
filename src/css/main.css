@@ -22,20 +22,20 @@
 @import url("./04-utilities.css");
 
 /* ------------------------------------------------------------
-   COMPONENTES (FASE 2+) — descomentar conforme criados:
-   @import url("./components/navbar.css");
-   @import url("./components/button.css");
-   @import url("./components/card.css");
-   @import url("./components/badge.css");
-   @import url("./components/stat-bar.css");
-   @import url("./components/skill-node.css");
+   COMPONENTES — descomentar conforme criados:
    ------------------------------------------------------------ */
+@import url("./components/navbar.css");
+@import url("./components/button.css");
+/* @import url("./components/card.css"); */
+/* @import url("./components/badge.css"); */
+/* @import url("./components/stat-bar.css"); */
+/* @import url("./components/skill-node.css"); */
 
 /* ------------------------------------------------------------
-   SEÇÕES (FASE 2+) — descomentar conforme criadas:
-   @import url("./sections/hero.css");
-   @import url("./sections/attributes.css");
-   @import url("./sections/skill-tree.css");
-   @import url("./sections/projects.css");
-   @import url("./sections/contact.css");
+   SEÇÕES — descomentar conforme criadas:
    ------------------------------------------------------------ */
+@import url("./sections/hero.css");
+/* @import url("./sections/attributes.css"); */
+/* @import url("./sections/skill-tree.css"); */
+/* @import url("./sections/projects.css"); */
+/* @import url("./sections/contact.css"); */
