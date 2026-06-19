@@ -1,0 +1,88 @@
+/* ============================================================
+   COMPONENTS / BUTTON.CSS
+   Botões do sistema. Primario = neon-red com pulso/glow.
+   Secundario = outline neon-cyan. Usa apenas tokens.
+   ============================================================ */
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-2);
+  padding: var(--space-3) var(--space-6);
+  border: 1px solid transparent;
+  border-radius: var(--radius-md);
+  font-family: var(--font-mono);
+  font-size: var(--fs-sm);
+  font-weight: 600;
+  letter-spacing: var(--ls-wide);
+  text-transform: uppercase;
+  cursor: pointer;
+  white-space: nowrap;
+  transition:
+    transform var(--dur-fast) var(--ease-out),
+    box-shadow var(--dur-fast) var(--ease-out),
+    background-color var(--dur-fast) var(--ease-out),
+    color var(--dur-fast) var(--ease-out),
+    border-color var(--dur-fast) var(--ease-out);
+}
+
+.btn:active {
+  transform: scale(0.98);
+}
+
+/* ---------- Primario: neon-red com glow pulsante ---------- */
+.btn--primary {
+  background-color: var(--neon-red);
+  color: var(--color-void);
+  box-shadow: var(--glow-red);
+}
+
+.btn--primary:hover {
+  transform: scale(1.03);
+  box-shadow:
+    0 0 12px rgba(255, 45, 85, .8),
+    0 0 32px rgba(255, 45, 85, .5);
+  animation: btn-pulse 1.2s var(--ease-out) infinite;
+}
+
+.btn--primary:focus-visible {
+  animation: btn-pulse 1.2s var(--ease-out) infinite;
+}
+
+/* ---------- Secundario: outline neon-cyan ---------- */
+.btn--secondary {
+  background-color: transparent;
+  color: var(--neon-cyan);
+  border-color: var(--neon-cyan);
+}
+
+.btn--secondary:hover {
+  transform: scale(1.03);
+  color: var(--color-void);
+  background-color: var(--neon-cyan);
+  box-shadow: var(--glow-cyan);
+}
+
+/* ---------- Pulso (estilo "energia" do power-up) ---------- */
+@keyframes btn-pulse {
+  0%,
+  100% {
+    box-shadow:
+      0 0 10px rgba(255, 45, 85, .7),
+      0 0 24px rgba(255, 45, 85, .4);
+  }
+  50% {
+    box-shadow:
+      0 0 16px rgba(255, 45, 85, .95),
+      0 0 40px rgba(255, 45, 85, .6);
+  }
+}
+
+/* ---------- Respeita reduced-motion ---------- */
+@media (prefers-reduced-motion: reduce) {
+  .btn--primary:hover,
+  .btn--primary:focus-visible {
+    animation: none;
+  }
+}
