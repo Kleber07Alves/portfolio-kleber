@@ -1,0 +1,94 @@
+/* ============================================================
+   01-TOKENS.CSS
+   Design tokens — Single Source of Truth de cores, tipografia,
+   espaçamento, raios e camadas. Nenhum hex cru deve existir
+   fora deste arquivo.
+   ============================================================ */
+
+:root {
+  /* ---------- BASE: Preto / Grafite ---------- */
+  --color-void:          #050507; /* Fundo absoluto (body) */
+  --color-abyss:         #0A0A0F; /* Fundo de seções */
+  --color-graphite-900:  #101018; /* Superfície elevada nível 1 */
+  --color-graphite-800:  #16161F; /* Superfície elevada nível 2 / hover */
+  --color-graphite-700:  #1F1F2B; /* Bordas internas / divisores */
+  --color-graphite-600:  #2A2A38; /* Bordas de destaque / outlines */
+  --color-smoke:         #6B6B7B; /* Texto secundário / legendas */
+  --color-ash:           #A8A8B8; /* Texto de corpo */
+  --color-paper:         #EDEDF2; /* Títulos / alta ênfase */
+
+  /* ---------- NEONS: Acentos futuristas ---------- */
+  --neon-red:      #FF2D55; /* CTA primário, energia */
+  --neon-cyan:     #00E5FF; /* Links, foco, highlights */
+  --neon-lime:     #39FF14; /* Sucesso, XP, status online */
+  --neon-gold:     #FFD60A; /* Conquistas, ratings */
+  --neon-magenta:  #D400FF; /* Skill tree, gradientes */
+  --neon-blue:     #2E5BFF; /* Acento secundário, profundidade */
+
+  /* ---------- GRADIENTES ---------- */
+  --gradient-hero:  linear-gradient(135deg, #FF2D55 0%, #D400FF 50%, #2E5BFF 100%);
+  --gradient-cyber: linear-gradient(90deg, #00E5FF 0%, #39FF14 100%);
+  --gradient-coin:  linear-gradient(180deg, #FFD60A 0%, #FF8A00 100%);
+
+  /* ---------- GLOWS (sombras neon) ---------- */
+  --glow-red:   0 0 8px rgba(255, 45, 85, .6),  0 0 24px rgba(255, 45, 85, .35);
+  --glow-cyan:  0 0 8px rgba(0, 229, 255, .6),  0 0 24px rgba(0, 229, 255, .35);
+  --glow-lime:  0 0 8px rgba(57, 255, 20, .55), 0 0 24px rgba(57, 255, 20, .3);
+  --glow-gold:  0 0 8px rgba(255, 214, 10, .6), 0 0 24px rgba(255, 214, 10, .35);
+
+  /* ---------- TIPOGRAFIA: Famílias ---------- */
+  --font-display: "Press Start 2P", "Orbitron", monospace;
+  --font-heading: "Orbitron", sans-serif;
+  --font-body:    "Inter", "Rajdhani", system-ui, sans-serif;
+  --font-mono:    "JetBrains Mono", monospace;
+
+  /* ---------- TIPOGRAFIA: Escala modular (ratio 1.25) ---------- */
+  --fs-xs:   0.64rem;   /* ~10.24px — labels, tags */
+  --fs-sm:   0.8rem;    /* ~12.8px  — legendas */
+  --fs-base: 1rem;      /* 16px     — corpo */
+  --fs-md:   1.25rem;   /* 20px     — destaque de corpo */
+  --fs-lg:   1.563rem;  /* ~25px    — H4 */
+  --fs-xl:   1.953rem;  /* ~31.25px — H3 */
+  --fs-2xl:  2.441rem;  /* ~39px    — H2 */
+  --fs-3xl:  3.052rem;  /* ~48.8px  — H1 */
+  --fs-4xl:  3.815rem;  /* ~61px    — Hero display */
+
+  /* ---------- TIPOGRAFIA: Line-height & tracking ---------- */
+  --lh-tight: 1.1;
+  --lh-base:  1.6;
+  --ls-wide:  0.08em;
+
+  /* ---------- ESPAÇAMENTO (base 8px) ---------- */
+  --space-1:  0.25rem;
+  --space-2:  0.5rem;
+  --space-3:  0.75rem;
+  --space-4:  1rem;
+  --space-6:  1.5rem;
+  --space-8:  2rem;
+  --space-12: 3rem;
+  --space-16: 4rem;
+  --space-24: 6rem;
+
+  /* ---------- RAIOS ---------- */
+  --radius-sm:   4px;
+  --radius-md:   10px;
+  --radius-lg:   18px;
+  --radius-pill: 999px;
+
+  /* ---------- Z-INDEX (camadas) ---------- */
+  --z-bg:      0;
+  --z-content: 10;
+  --z-overlay: 100;
+  --z-nav:     500;
+  --z-modal:   1000;
+
+  /* ---------- CONTAINER ---------- */
+  --container-max: 1200px;
+  --container-pad: clamp(1rem, 5vw, 3rem);
+
+  /* ---------- MOTION (transições padrão) ---------- */
+  --ease-out:   cubic-bezier(.2, .8, .2, 1);
+  --dur-fast:   180ms;
+  --dur-base:   220ms;
+  --dur-slow:   500ms;
+}

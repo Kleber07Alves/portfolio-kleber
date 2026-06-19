@@ -1,0 +1,93 @@
+/* ============================================================
+   00-RESET.CSS
+   Reset moderno (baseado em Andy Bell / normalize práticas).
+   Carregado ANTES dos tokens não é necessário — apenas zera
+   comportamentos do navegador.
+   ============================================================ */
+
+/* Box sizing previsível em tudo */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+/* Zera margens padrão */
+* {
+  margin: 0;
+}
+
+/* Altura mínima total + suavização de fonte */
+html,
+body {
+  min-height: 100%;
+}
+
+body {
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+/* Mídia responsiva por padrão */
+img,
+picture,
+video,
+canvas,
+svg {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+/* Inputs herdam a tipografia */
+input,
+button,
+textarea,
+select {
+  font: inherit;
+  color: inherit;
+}
+
+/* Evita overflow de palavras longas */
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  overflow-wrap: break-word;
+}
+
+/* Listas sem estilo quando usadas como navegação/layout */
+ul[role="list"],
+ol[role="list"] {
+  list-style: none;
+  padding: 0;
+}
+
+/* Scroll suave para âncoras */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Alvo de âncora não cola na navbar fixa (ajustado nas fases seguintes) */
+:target {
+  scroll-margin-top: var(--space-16);
+}
+
+/* ---------- Acessibilidade: respeitar reduced motion ---------- */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
