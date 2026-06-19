@@ -1,15 +1,17 @@
 /* ============================================================
    MAIN.JS — Bootstrap
    Ponto de entrada da aplicação (ES Module).
-   Na FASE 1 apenas inicializa e valida o pipeline.
-   Os módulos (navbar, revealOnScroll, statCounter, etc.) serão
-   importados e inicializados aqui a partir da FASE 2.
+   Importa e inicializa os módulos de comportamento. Novos
+   módulos (revealOnScroll, statCounter, etc.) entram aqui.
    ============================================================ */
+
+import { initNavbar } from "./modules/navbar.js";
 
 const App = {
   init() {
     this.setFooterYear();
-    console.log("%c⚡ Fundação inicializada — FASE 1 OK", "color:#39FF14;font-weight:bold;");
+    initNavbar();
+    console.log("%c⚡ FASE 2 — Hero inicializado", "color:#39FF14;font-weight:bold;");
   },
 
   /** Preenche o ano atual no footer. */
