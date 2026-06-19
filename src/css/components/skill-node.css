@@ -1,0 +1,133 @@
+/* ============================================================
+   COMPONENTS / SKILL-NODE.CSS
+   Nó da skill tree: círculo neon + rótulo. Três estados
+   (mastered / unlocked / locked) e um estado energizado
+   (.is-active) acionado ao percorrer o caminho até a raiz.
+   ============================================================ */
+
+.skill-node {
+  /* Acento do nó (definido por estado) */
+  --node-accent: var(--color-smoke);
+  --node-glow: transparent;
+
+  position: relative;
+  z-index: var(--z-content);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-2);
+  width: 116px;
+  padding: 0;
+  background: transparent;
+  border: 0;
+  cursor: pointer;
+  color: var(--color-ash);
+  text-align: center;
+  transition: transform var(--dur-base) var(--ease-out);
+}
+
+/* ---------- Círculo ---------- */
+.skill-node__dot {
+  display: grid;
+  place-items: center;
+  width: 60px;
+  height: 60px;
+  border-radius: var(--radius-pill);
+  background-color: var(--color-graphite-900);
+  border: 2px solid var(--node-accent);
+  color: var(--node-accent);
+  box-shadow: 0 0 0 4px rgba(5, 5, 7, 0.6); /* recorte sobre as linhas */
+  transition:
+    box-shadow var(--dur-base) var(--ease-out),
+    border-color var(--dur-base) var(--ease-out),
+    color var(--dur-base) var(--ease-out),
+    transform var(--dur-base) var(--ease-out);
+}
+
+.skill-node__dot svg {
+  width: 28px;
+  height: 28px;
+}
+
+/* ---------- Rótulo ---------- */
+.skill-node__label {
+  font-family: var(--font-mono);
+  font-size: var(--fs-xs);
+  letter-spacing: var(--ls-wide);
+  color: var(--color-ash);
+  transition: color var(--dur-base) var(--ease-out);
+}
+
+/* ============================================================
+   ESTADOS
+   ============================================================ */
+
+/* Dominado — lime, preenchido e brilhante */
+.skill-node--mastered {
+  --node-accent: var(--neon-lime);
+  --node-glow: var(--glow-lime);
+}
+.skill-node--mastered .skill-node__dot {
+  box-shadow: var(--glow-lime), 0 0 0 4px rgba(5, 5, 7, 0.6);
+}
+
+/* Em evolução — cyan, contorno aceso */
+.skill-node--unlocked {
+  --node-accent: var(--neon-cyan);
+  --node-glow: var(--glow-cyan);
+}
+
+/* A desbloquear — apagado, tracejado */
+.skill-node--locked {
+  --node-accent: var(--color-graphite-600);
+  --node-glow: transparent;
+}
+.skill-node--locked .skill-node__dot {
+  border-style: dashed;
+  color: var(--color-smoke);
+  background-color: var(--color-abyss);
+}
+.skill-node--locked .skill-node__label {
+  color: var(--color-smoke);
+}
+
+/* ============================================================
+   INTERAÇÃO: hover/focus direto e energização do caminho
+   ============================================================ */
+.skill-node:hover,
+.skill-node:focus-visible {
+  transform: translateY(-3px);
+  outline: none;
+}
+
+.skill-node:hover .skill-node__dot,
+.skill-node:focus-visible .skill-node__dot,
+.skill-node.is-active .skill-node__dot {
+  border-color: var(--node-accent);
+  color: var(--node-accent);
+  box-shadow: var(--node-glow), 0 0 0 4px rgba(5, 5, 7, 0.6);
+}
+
+.skill-node.is-active .skill-node__label,
+.skill-node:hover .skill-node__label,
+.skill-node:focus-visible .skill-node__label {
+  color: var(--color-paper);
+}
+
+/* O nó alvo (foco do hover) recebe um anel extra */
+.skill-node.is-target .skill-node__dot {
+  transform: scale(1.08);
+}
+
+/* Quando algum caminho está ativo, escurece os nós fora dele */
+.skill-tree__canvas.is-dimmed .skill-node:not(.is-active) {
+  opacity: 0.4;
+  transition: opacity var(--dur-base) var(--ease-out);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .skill-node,
+  .skill-node__dot {
+    transition: none;
+  }
+}
