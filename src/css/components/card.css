@@ -1,0 +1,113 @@
+/* ============================================================
+   COMPONENTS / CARD.CSS
+   Card de atributo (ficha RPG). Fundo grafite, borda sutil e
+   hover que eleva o card com glow neon. A cor de acento e
+   controlada por --card-accent / --card-glow (default: cyan).
+   ============================================================ */
+
+.card {
+  /* Acento padrao do card (sobrescrito por .card--lime) */
+  --card-accent: var(--neon-cyan);
+  --card-glow: var(--glow-cyan);
+
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+  height: 100%;
+  padding: var(--space-6);
+  background-color: var(--color-graphite-900);
+  border: 1px solid var(--color-graphite-700);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  transition:
+    transform var(--dur-base) var(--ease-out),
+    border-color var(--dur-base) var(--ease-out),
+    box-shadow var(--dur-base) var(--ease-out);
+}
+
+/* Linha de acento no topo do card (revela no hover) */
+.card::before {
+  content: "";
+  position: absolute;
+  inset: 0 0 auto 0;
+  height: 2px;
+  background: var(--card-accent);
+  opacity: 0;
+  transition: opacity var(--dur-base) var(--ease-out);
+}
+
+.card:hover,
+.card:focus-within {
+  transform: translateY(-6px);
+  border-color: var(--card-accent);
+  box-shadow: var(--card-glow);
+}
+
+.card:hover::before,
+.card:focus-within::before {
+  opacity: 1;
+}
+
+/* ---------- Modificador de acento ---------- */
+.card--lime {
+  --card-accent: var(--neon-lime);
+  --card-glow: var(--glow-lime);
+}
+
+/* ---------- Cabecalho: icone + titulo + nivel ---------- */
+.card__head {
+  display: flex;
+  align-items: center;
+  gap: var(--space-4);
+}
+
+.card__icon {
+  display: grid;
+  place-items: center;
+  flex-shrink: 0;
+  width: 48px;
+  height: 48px;
+  border-radius: var(--radius-md);
+  background-color: var(--color-graphite-800);
+  border: 1px solid var(--color-graphite-700);
+  color: var(--card-accent);
+}
+
+.card__icon svg {
+  width: 26px;
+  height: 26px;
+}
+
+.card__heading {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.card__title {
+  margin: 0;
+  font-size: var(--fs-lg);
+  color: var(--color-paper);
+}
+
+.card__level {
+  font-family: var(--font-mono);
+  font-size: var(--fs-xs);
+  letter-spacing: var(--ls-wide);
+  text-transform: uppercase;
+  color: var(--card-accent);
+}
+
+/* ---------- Descricao ---------- */
+.card__desc {
+  margin: 0;
+  font-size: var(--fs-sm);
+  color: var(--color-ash);
+  line-height: var(--lh-base);
+}
+
+/* ---------- Rodape: tags (empurradas para baixo) ---------- */
+.card__tags {
+  margin-top: auto;
+}
