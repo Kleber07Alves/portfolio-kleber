@@ -1,0 +1,41 @@
+/* ============================================================
+   SECTIONS / ATTRIBUTES.CSS
+   Layout da secao de Atributos: cabecalho de secao reutilizavel
+   (.section-head) e ajustes do grid de cards.
+   ============================================================ */
+
+.attributes {
+  background-color: var(--color-abyss);
+}
+
+/* ---------- Cabecalho de secao (reutilizavel) ---------- */
+.section-head {
+  max-width: 60ch;
+  margin-bottom: var(--space-12);
+}
+
+.section-head__eyebrow {
+  margin: 0 0 var(--space-2);
+  font-family: var(--font-mono);
+  font-size: var(--fs-xs);
+  letter-spacing: var(--ls-wide);
+  text-transform: uppercase;
+  color: var(--neon-cyan);
+}
+
+.section-head__title {
+  margin: 0;
+  font-size: clamp(var(--fs-2xl), 8vw, var(--fs-3xl));
+}
+
+.section-head__lead {
+  margin: var(--space-4) 0 0;
+  color: var(--color-ash);
+  font-size: var(--fs-md);
+}
+
+/* ---------- Grid de cards ---------- */
+.attributes__grid {
+  /* herda .grid--auto-fit; cards um pouco mais largos aqui */
+  grid-template-columns: repeat(auto-fit, minmax(min(300px, 100%), 1fr));
+}
