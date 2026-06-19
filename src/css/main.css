@@ -29,13 +29,13 @@
 @import url("./components/card.css");
 @import url("./components/badge.css");
 @import url("./components/stat-bar.css");
-/* @import url("./components/skill-node.css"); */
+@import url("./components/skill-node.css");
 
 /* ------------------------------------------------------------
    SEÇÕES — descomentar conforme criadas:
    ------------------------------------------------------------ */
 @import url("./sections/hero.css");
 @import url("./sections/attributes.css");
-/* @import url("./sections/skill-tree.css"); */
+@import url("./sections/skill-tree.css");
 /* @import url("./sections/projects.css"); */
 /* @import url("./sections/contact.css"); */

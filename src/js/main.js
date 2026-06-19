@@ -7,13 +7,15 @@
 
 import { initNavbar } from "./modules/navbar.js";
 import { initAttributes } from "./modules/attributes.js";
+import { initSkillTree } from "./modules/skillTree.js";
 
 const App = {
   init() {
     this.setFooterYear();
     initNavbar();
     initAttributes();
-    console.log("%c⚡ FASE 3 — Atributos renderizados", "color:#39FF14;font-weight:bold;");
+    initSkillTree();
+    console.log("%c⚡ FASE 4 — Skill Tree montada", "color:#39FF14;font-weight:bold;");
   },
 
   /** Preenche o ano atual no footer. */
