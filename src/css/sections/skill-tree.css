@@ -1,0 +1,149 @@
+/* ============================================================
+   SECTIONS / SKILL-TREE.CSS
+   Layout da árvore: canvas com tiers e overlay SVG de conexões.
+   Desktop (>=768px): tiers horizontais com linhas curvas.
+   Mobile: timeline vertical empilhada com trilho neon.
+   ============================================================ */
+
+.skill-tree {
+  background-color: var(--color-void);
+}
+
+/* ---------- Legenda de estados ---------- */
+.skill-tree__legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-4) var(--space-6);
+  margin: 0 0 var(--space-12);
+  padding: 0;
+  list-style: none;
+}
+
+.skill-legend {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  font-family: var(--font-mono);
+  font-size: var(--fs-xs);
+  letter-spacing: var(--ls-wide);
+  text-transform: uppercase;
+  color: var(--color-ash);
+}
+
+.skill-legend::before {
+  content: "";
+  width: 12px;
+  height: 12px;
+  border-radius: var(--radius-pill);
+  border: 2px solid currentColor;
+}
+
+.skill-legend--mastered { color: var(--neon-lime); }
+.skill-legend--mastered::before { background: var(--neon-lime); box-shadow: var(--glow-lime); }
+.skill-legend--unlocked { color: var(--neon-cyan); }
+.skill-legend--locked   { color: var(--color-smoke); }
+.skill-legend--locked::before { border-style: dashed; }
+
+/* ---------- Canvas ---------- */
+.skill-tree__canvas {
+  position: relative;
+}
+
+/* Overlay SVG das conexões (atrás dos nós) */
+.skill-tree__svg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  z-index: var(--z-bg);
+  pointer-events: none;
+  overflow: visible;
+}
+
+.skill-tree__link {
+  fill: none;
+  stroke: var(--color-graphite-600);
+  stroke-width: 2;
+  stroke-linecap: round;
+  transition:
+    stroke var(--dur-base) var(--ease-out),
+    stroke-width var(--dur-base) var(--ease-out),
+    filter var(--dur-base) var(--ease-out);
+}
+
+/* Conexão energizada (caminho até a raiz) */
+.skill-tree__link.is-active {
+  stroke: var(--neon-cyan);
+  stroke-width: 3;
+  filter: drop-shadow(0 0 6px rgba(0, 229, 255, 0.7));
+}
+
+/* ---------- Tiers (desktop) ---------- */
+.skill-tree__tiers {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-16);
+}
+
+.skill-tree__tier {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: var(--space-8) var(--space-12);
+}
+
+/* ============================================================
+   MOBILE: timeline vertical empilhada (< 768px)
+   ============================================================ */
+@media (max-width: 767px) {
+  /* Esconde as linhas SVG — o trilho vertical assume */
+  .skill-tree__svg {
+    display: none;
+  }
+
+  /* Indenta o canvas para abrir espaço ao trilho */
+  .skill-tree__canvas {
+    --rail-x: 30px; /* centro do dot (60px / 2) */
+  }
+
+  /* Trilho neon contínuo atrás dos nós */
+  .skill-tree__canvas::before {
+    content: "";
+    position: absolute;
+    top: 12px;
+    bottom: 12px;
+    left: var(--rail-x);
+    width: 2px;
+    background: linear-gradient(
+      180deg,
+      var(--neon-lime) 0%,
+      var(--neon-cyan) 55%,
+      var(--color-graphite-600) 100%
+    );
+    opacity: 0.7;
+  }
+
+  .skill-tree__tiers {
+    gap: var(--space-6);
+  }
+
+  .skill-tree__tier {
+    flex-direction: column;
+    align-items: stretch;
+    gap: var(--space-6);
+  }
+
+  /* Nó vira linha: dot à esquerda (sobre o trilho), rótulo à direita */
+  .skill-node {
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+    width: 100%;
+    gap: var(--space-4);
+    text-align: left;
+  }
+
+  .skill-node__label {
+    font-size: var(--fs-sm);
+  }
+}
