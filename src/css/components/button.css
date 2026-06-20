@@ -1,7 +1,8 @@
 /* ============================================================
    COMPONENTS / BUTTON.CSS
-   Botões do sistema. Primario = neon-red com pulso/glow.
-   Secundario = outline neon-cyan. Usa apenas tokens.
+   Botões limpos e amigáveis. Primário = vermelho Mario suave
+   com sombra leve; secundário = contorno azul. Hover eleva
+   suavemente, sem brilhos neon.
    ============================================================ */
 
 .btn {
@@ -11,78 +12,49 @@
   gap: var(--space-2);
   padding: var(--space-3) var(--space-6);
   border: 1px solid transparent;
-  border-radius: var(--radius-md);
-  font-family: var(--font-mono);
-  font-size: var(--fs-sm);
+  border-radius: var(--radius-pill);
+  font-family: var(--font-heading);
+  font-size: var(--fs-base);
   font-weight: 600;
-  letter-spacing: var(--ls-wide);
-  text-transform: uppercase;
+  letter-spacing: 0.01em;
   cursor: pointer;
   white-space: nowrap;
   transition:
     transform var(--dur-fast) var(--ease-out),
-    box-shadow var(--dur-fast) var(--ease-out),
+    box-shadow var(--dur-base) var(--ease-out),
     background-color var(--dur-fast) var(--ease-out),
     color var(--dur-fast) var(--ease-out),
     border-color var(--dur-fast) var(--ease-out);
 }
 
 .btn:active {
-  transform: scale(0.98);
+  transform: translateY(1px) scale(0.99);
 }
 
-/* ---------- Primario: neon-red com glow pulsante ---------- */
+/* ---------- Primário: vermelho Mario suave ---------- */
 .btn--primary {
   background-color: var(--neon-red);
-  color: var(--color-void);
-  box-shadow: var(--glow-red);
+  color: #fff;
+  box-shadow: var(--shadow-md);
 }
 
 .btn--primary:hover {
-  transform: scale(1.03);
-  box-shadow:
-    0 0 12px rgba(255, 45, 85, .8),
-    0 0 32px rgba(255, 45, 85, .5);
-  animation: btn-pulse 1.2s var(--ease-out) infinite;
+  transform: translateY(-2px);
+  box-shadow: var(--glow-red);
 }
 
-.btn--primary:focus-visible {
-  animation: btn-pulse 1.2s var(--ease-out) infinite;
-}
-
-/* ---------- Secundario: outline neon-cyan ---------- */
+/* ---------- Secundário: contorno azul ---------- */
 .btn--secondary {
-  background-color: transparent;
-  color: var(--neon-cyan);
-  border-color: var(--neon-cyan);
+  background-color: var(--color-graphite-900);
+  color: var(--neon-blue);
+  border-color: var(--color-graphite-600);
+  box-shadow: var(--shadow-sm);
 }
 
 .btn--secondary:hover {
-  transform: scale(1.03);
-  color: var(--color-void);
-  background-color: var(--neon-cyan);
+  transform: translateY(-2px);
+  color: #fff;
+  background-color: var(--neon-blue);
+  border-color: var(--neon-blue);
   box-shadow: var(--glow-cyan);
-}
-
-/* ---------- Pulso (estilo "energia" do power-up) ---------- */
-@keyframes btn-pulse {
-  0%,
-  100% {
-    box-shadow:
-      0 0 10px rgba(255, 45, 85, .7),
-      0 0 24px rgba(255, 45, 85, .4);
-  }
-  50% {
-    box-shadow:
-      0 0 16px rgba(255, 45, 85, .95),
-      0 0 40px rgba(255, 45, 85, .6);
-  }
-}
-
-/* ---------- Respeita reduced-motion ---------- */
-@media (prefers-reduced-motion: reduce) {
-  .btn--primary:hover,
-  .btn--primary:focus-visible {
-    animation: none;
-  }
 }
