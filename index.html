@@ -26,6 +26,19 @@
   <!-- Favicon -->
   <link rel="icon" type="image/svg+xml" href="/public/favicon.svg" />
 
+  <!-- Marca que o JS está ativo (habilita reveal-on-scroll sem esconder
+       conteúdo de quem está sem JavaScript). Inline para evitar FOUC. -->
+  <script>document.documentElement.classList.add("js");</script>
+
+  <!-- Fontes do design system (Google Fonts). preconnect reduz a latência;
+       carregamos apenas os pesos usados nos tokens; display=swap evita FOIT. -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    rel="stylesheet"
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&family=Orbitron:wght@600;700;800&family=Press+Start+2P&display=swap"
+  />
+
   <!-- Styles (orquestrador único) -->
   <link rel="stylesheet" href="src/css/main.css" />
 </head>
@@ -60,8 +73,8 @@
         <li><a class="navbar__link" href="#hero">Início</a></li>
         <li><a class="navbar__link" href="#atributos">Atributos</a></li>
         <li><a class="navbar__link" href="#skill-tree">Skill Tree</a></li>
-        <li><a class="navbar__link" href="#projetos">Projetos</a></li>
-        <li><a class="navbar__link" href="#contato">Contato</a></li>
+        <li><a class="navbar__link" href="#projects">Quest Log</a></li>
+        <li><a class="navbar__link" href="#contact">Contato</a></li>
       </ul>
     </nav>
   </header>
@@ -91,8 +104,8 @@
         </p>
 
         <div class="hero__actions">
-          <a class="btn btn--primary" href="#projetos">[ PRESS START ]</a>
-          <a class="btn btn--secondary" href="#contato">Contato</a>
+          <a class="btn btn--primary" href="#projects">[ PRESS START ]</a>
+          <a class="btn btn--secondary" href="#contact">Contato</a>
         </div>
       </div>
     </section>
@@ -100,7 +113,7 @@
     <!-- ============================ ATRIBUTOS ============================ -->
     <section class="attributes" id="atributos" aria-labelledby="atributos-title">
       <div class="container">
-        <header class="section-head">
+        <header class="section-head" data-reveal>
           <p class="section-head__eyebrow">// CHARACTER SHEET</p>
           <h2 class="section-head__title" id="atributos-title">Atributos</h2>
           <p class="section-head__lead">
@@ -122,7 +135,7 @@
     <!-- ============================ SKILL TREE ============================ -->
     <section class="skill-tree" id="skill-tree" aria-labelledby="skill-tree-title">
       <div class="container">
-        <header class="section-head">
+        <header class="section-head" data-reveal>
           <p class="section-head__eyebrow">// PROGRESSION MAP</p>
           <h2 class="section-head__title" id="skill-tree-title">Skill Tree</h2>
           <p class="section-head__lead">
@@ -145,6 +158,7 @@
           id="skillCanvas"
           role="group"
           aria-label="Árvore de habilidades"
+          data-reveal
         >
           <noscript>
             <p class="text-muted">Ative o JavaScript para visualizar a skill tree.</p>
@@ -153,7 +167,140 @@
       </div>
     </section>
 
-    <!-- Próximas seções (Projetos, Contato) — FASE 5+ -->
+    <!-- ============================= QUEST LOG ============================= -->
+    <section class="projects" id="projects" aria-labelledby="projects-title">
+      <div class="container">
+        <header class="section-head" data-reveal>
+          <p class="section-head__eyebrow">// QUEST LOG</p>
+          <h2 class="section-head__title" id="projects-title">Missões Atuais</h2>
+          <p class="section-head__lead">
+            Quests em andamento — desafios técnicos que estou enfrentando agora.
+            Missões longas, difíceis e <strong>imparáveis</strong>: cada commit
+            é mais um passo até concluí-las.
+          </p>
+        </header>
+
+        <ul class="projects__grid grid grid--auto-fit" role="list">
+          <li class="quest" data-reveal>
+            <div class="quest__top">
+              <span class="quest__status"><span class="quest__pulse" aria-hidden="true"></span>Em andamento</span>
+              <span class="quest__rank">Rank A</span>
+            </div>
+            <h3 class="quest__title">Dominando Java &amp; SQL</h3>
+            <p class="quest__desc">
+              Aprofundando a linguagem que sustenta sistemas robustos e a arte de
+              modelar e consultar dados com eficiência.
+            </p>
+            <ul class="quest__objectives" role="list">
+              <li>POO avançada &amp; coleções</li>
+              <li>Modelagem e queries complexas</li>
+              <li>Integração Java + banco relacional</li>
+            </ul>
+          </li>
+
+          <li class="quest" data-reveal>
+            <div class="quest__top">
+              <span class="quest__status"><span class="quest__pulse" aria-hidden="true"></span>Em andamento</span>
+              <span class="quest__rank">Rank S</span>
+            </div>
+            <h3 class="quest__title">Arquitetura de Sistemas</h3>
+            <p class="quest__desc">
+              Entender como peças se conectam em escala: design de componentes,
+              trade-offs e a estrutura por trás de software confiável.
+            </p>
+            <ul class="quest__objectives" role="list">
+              <li>Padrões de projeto</li>
+              <li>Camadas &amp; responsabilidades</li>
+              <li>Escalabilidade e resiliência</li>
+            </ul>
+          </li>
+
+          <li class="quest" data-reveal>
+            <div class="quest__top">
+              <span class="quest__status"><span class="quest__pulse" aria-hidden="true"></span>Em andamento</span>
+              <span class="quest__rank">Rank S</span>
+            </div>
+            <h3 class="quest__title">Compiladores &amp; Interpretadores</h3>
+            <p class="quest__desc">
+              A quest mais profunda: entender como a linguagem vira máquina —
+              do parsing à execução. Lógica pura no seu estado mais bruto.
+            </p>
+            <ul class="quest__objectives" role="list">
+              <li>Léxico, sintaxe &amp; AST</li>
+              <li>Interpretação &amp; avaliação</li>
+              <li>Fundamentos de geração de código</li>
+            </ul>
+          </li>
+
+          <li class="quest" data-reveal>
+            <div class="quest__top">
+              <span class="quest__status"><span class="quest__pulse" aria-hidden="true"></span>Em andamento</span>
+              <span class="quest__rank">Rank B</span>
+            </div>
+            <h3 class="quest__title">Estruturas de Dados &amp; Algoritmos</h3>
+            <p class="quest__desc">
+              O treino diário do raciocínio: dominar as ferramentas que tornam
+              o código rápido, elegante e à prova de problemas difíceis.
+            </p>
+            <ul class="quest__objectives" role="list">
+              <li>Complexidade &amp; Big-O</li>
+              <li>Árvores, grafos &amp; hashing</li>
+              <li>Resolução de problemas</li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- ============================== CONTATO ============================== -->
+    <section class="contact" id="contact" aria-labelledby="contact-title">
+      <div class="container">
+        <header class="section-head" data-reveal>
+          <p class="section-head__eyebrow">// CONNECT</p>
+          <h2 class="section-head__title" id="contact-title">Contato</h2>
+          <p class="section-head__lead">
+            Bora trocar ideia, somar em projetos ou só falar de tecnologia?
+            Me encontra por aqui.
+          </p>
+        </header>
+
+        <div class="contact__links">
+          <a
+            class="contact__link contact__link--github"
+            href="https://github.com/Kleber07Alves"
+            target="_blank"
+            rel="noopener noreferrer"
+            data-reveal
+          >
+            <span class="contact__icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 .5C5.7.5.5 5.7.5 12c0 5.1 3.3 9.4 7.9 10.9.6.1.8-.3.8-.6v-2c-3.2.7-3.9-1.4-3.9-1.4-.5-1.3-1.3-1.7-1.3-1.7-1.1-.7.1-.7.1-.7 1.2.1 1.8 1.2 1.8 1.2 1 1.8 2.8 1.3 3.5 1 .1-.8.4-1.3.7-1.6-2.6-.3-5.3-1.3-5.3-5.7 0-1.3.5-2.3 1.2-3.1-.1-.3-.5-1.5.1-3.2 0 0 1-.3 3.3 1.2a11.5 11.5 0 0 1 6 0C17 4.7 18 5 18 5c.6 1.7.2 2.9.1 3.2.8.8 1.2 1.8 1.2 3.1 0 4.4-2.7 5.4-5.3 5.7.4.4.8 1.1.8 2.2v3.3c0 .3.2.7.8.6 4.6-1.5 7.9-5.8 7.9-10.9C23.5 5.7 18.3.5 12 .5z"/></svg>
+            </span>
+            <span class="contact__meta">
+              <span class="contact__label">GitHub</span>
+              <span class="contact__handle">@Kleber07Alves</span>
+            </span>
+            <span class="contact__arrow" aria-hidden="true">→</span>
+          </a>
+
+          <a
+            class="contact__link contact__link--linkedin"
+            href="https://www.linkedin.com/in/kleber-kauã-alves-da-silva-b69900271"
+            target="_blank"
+            rel="noopener noreferrer"
+            data-reveal
+          >
+            <span class="contact__icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20.45 20.45h-3.56v-5.57c0-1.33 0-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.35V9h3.41v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.45v6.29zM5.34 7.43a2.06 2.06 0 1 1 0-4.13 2.06 2.06 0 0 1 0 4.13zM7.12 20.45H3.56V9h3.56v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.72v20.56C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.72V1.72C24 .77 23.2 0 22.22 0z"/></svg>
+            </span>
+            <span class="contact__meta">
+              <span class="contact__label">LinkedIn</span>
+              <span class="contact__handle">Kleber Kauã Alves da Silva</span>
+            </span>
+            <span class="contact__arrow" aria-hidden="true">→</span>
+          </a>
+        </div>
+      </div>
+    </section>
   </main>
 
   <!-- =============================== FOOTER =============================== -->
