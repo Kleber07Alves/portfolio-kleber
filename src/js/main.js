@@ -11,7 +11,6 @@ import { initAttributes } from "./modules/attributes.js";
 import { initSkillTree } from "./modules/skillTree.js";
 import { initStatCounter } from "./modules/statCounter.js";
 import { initReveal } from "./modules/revealOnScroll.js";
-import { initCursorGlow } from "./modules/cursorGlow.js";
 
 const App = {
   init() {
@@ -27,9 +26,8 @@ const App = {
     // 3. Camada de animação e efeitos (depende do conteúdo já renderizado).
     initStatCounter();
     initReveal();
-    initCursorGlow();
 
-    console.log("%c⚡ FASE 5 — Animações e efeitos ativos", "color:#39FF14;font-weight:bold;");
+    console.log("%c🍄 Portfólio Mario carregado", "color:#57A773;font-weight:bold;");
   },
 
   /** Preenche o ano atual no footer. */

@@ -90,32 +90,3 @@
     transform: none;
   }
 }
-
-/* ============================================================
-   CURSOR GLOW (luz de fundo que segue o mouse — desktop)
-   Criado e posicionado por cursorGlow.js. mix-blend screen para
-   iluminar suavemente o conteúdo sob o cursor.
-   ============================================================ */
-.cursor-glow {
-  position: fixed;
-  top: 0;
-  left: 0;
-  z-index: var(--z-overlay);
-  width: 480px;
-  height: 480px;
-  border-radius: var(--radius-pill);
-  pointer-events: none;
-  background: radial-gradient(
-    circle,
-    rgba(0, 229, 255, 0.10) 0%,
-    rgba(212, 0, 255, 0.06) 40%,
-    transparent 70%
-  );
-  mix-blend-mode: screen;
-  opacity: 0;
-  transition: opacity var(--dur-slow) var(--ease-out);
-}
-
-.cursor-glow.is-active {
-  opacity: 1;
-}
