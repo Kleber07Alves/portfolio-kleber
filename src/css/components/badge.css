@@ -32,18 +32,17 @@
     box-shadow var(--dur-fast) var(--ease-out);
 }
 
-/* Ponto luminoso antes do texto (estrela coletavel) */
+/* Ponto antes do texto (moeda coletável) */
 .badge::before {
   content: "";
-  width: 5px;
-  height: 5px;
+  width: 6px;
+  height: 6px;
   border-radius: var(--radius-pill);
-  background-color: var(--neon-gold);
-  box-shadow: 0 0 6px rgba(255, 214, 10, 0.7);
+  background: var(--gradient-coin);
 }
 
 .badge:hover {
   color: var(--color-paper);
   border-color: var(--neon-gold);
-  box-shadow: var(--glow-gold);
+  box-shadow: var(--shadow-sm);
 }

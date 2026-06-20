@@ -1,8 +1,8 @@
 /* ============================================================
    COMPONENTS / STAT-BAR.CSS
-   Barra de progresso estilo "XP". Trilho escuro + preenchimento
-   neon vibrante com brilho interno. O valor vem de --val (0-100%)
-   definido inline pela renderizacao; o acento por modificador.
+   Barra de progresso estilo "XP", limpa e moderna. Trilho claro
+   com preenchimento de acento Mario (verde/azul) e leve gradiente.
+   O valor vem de --val (0-100%) definido na renderização.
    ============================================================ */
 
 .stat {
@@ -11,7 +11,6 @@
   gap: var(--space-2);
 }
 
-/* Linha de metadados: rotulo + valor numerico */
 .stat__meta {
   display: flex;
   align-items: baseline;
@@ -28,13 +27,14 @@
 
 .stat__value {
   color: var(--color-paper);
+  font-weight: 500;
 }
 
 /* ---------- Trilho ---------- */
 .stat__track {
   position: relative;
   width: 100%;
-  height: 8px;
+  height: 10px;
   background-color: var(--color-graphite-800);
   border: 1px solid var(--color-graphite-700);
   border-radius: var(--radius-pill);
@@ -44,7 +44,6 @@
 /* ---------- Preenchimento ---------- */
 .stat__fill {
   --fill-color: var(--neon-cyan);
-  --fill-glow: rgba(0, 229, 255, 0.55);
 
   position: relative;
   height: 100%;
@@ -52,41 +51,29 @@
   border-radius: var(--radius-pill);
   background: linear-gradient(
     90deg,
-    color-mix(in srgb, var(--fill-color) 55%, var(--color-void)) 0%,
+    color-mix(in srgb, var(--fill-color) 72%, #fff) 0%,
     var(--fill-color) 100%
   );
-  box-shadow: 0 0 10px var(--fill-glow);
-
-  /* Anima o preenchimento ao revelar (largura cresce) */
   transition: width 900ms var(--ease-out);
 }
 
-/* Brilho deslizante sutil no topo do preenchimento */
+/* Brilho suave no topo do preenchimento */
 .stat__fill::after {
   content: "";
   position: absolute;
   inset: 0;
   background: linear-gradient(
     180deg,
-    rgba(255, 255, 255, 0.35) 0%,
-    transparent 45%
+    rgba(255, 255, 255, 0.45) 0%,
+    transparent 55%
   );
-  mix-blend-mode: screen;
   pointer-events: none;
 }
 
 /* ---------- Acentos ---------- */
-.stat__fill--lime {
-  --fill-color: var(--neon-lime);
-  --fill-glow: rgba(57, 255, 20, 0.5);
-}
+.stat__fill--lime { --fill-color: var(--neon-lime); }
+.stat__fill--cyan { --fill-color: var(--neon-cyan); }
 
-.stat__fill--cyan {
-  --fill-color: var(--neon-cyan);
-  --fill-glow: rgba(0, 229, 255, 0.55);
-}
-
-/* ---------- Reduced motion ---------- */
 @media (prefers-reduced-motion: reduce) {
   .stat__fill {
     transition: none;
