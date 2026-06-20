@@ -1,0 +1,145 @@
+/* ============================================================
+   SECTIONS / PROJECTS.CSS  (Quest Log)
+   Missões em andamento como cards "imparáveis": barra de acento
+   lateral, status pulsante e hover que eleva com glow.
+   ============================================================ */
+
+.projects {
+  background-color: var(--color-abyss);
+}
+
+.projects__grid {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+/* ---------- Card de missão ---------- */
+.quest {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+  height: 100%;
+  padding: var(--space-6);
+  padding-left: calc(var(--space-6) + 4px);
+  background-color: var(--color-graphite-900);
+  border: 1px solid var(--color-graphite-700);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  transition:
+    transform var(--dur-base) var(--ease-out),
+    border-color var(--dur-base) var(--ease-out),
+    box-shadow var(--dur-base) var(--ease-out);
+}
+
+/* Barra de acento lateral (a "energia imparável" da missão) */
+.quest::before {
+  content: "";
+  position: absolute;
+  inset: 0 auto 0 0;
+  width: 4px;
+  background: var(--gradient-cyber);
+  opacity: 0.7;
+  transition: opacity var(--dur-base) var(--ease-out);
+}
+
+.quest:hover,
+.quest:focus-within {
+  transform: translateY(-6px);
+  border-color: var(--neon-cyan);
+  box-shadow: var(--glow-cyan);
+}
+
+.quest:hover::before,
+.quest:focus-within::before {
+  opacity: 1;
+}
+
+/* ---------- Topo: status + rank ---------- */
+.quest__top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-3);
+}
+
+.quest__status {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  font-family: var(--font-mono);
+  font-size: var(--fs-xs);
+  letter-spacing: var(--ls-wide);
+  text-transform: uppercase;
+  color: var(--neon-lime);
+}
+
+.quest__pulse {
+  width: 8px;
+  height: 8px;
+  border-radius: var(--radius-pill);
+  background-color: var(--neon-lime);
+  box-shadow: var(--glow-lime);
+  animation: quest-pulse 1.6s var(--ease-out) infinite;
+}
+
+.quest__rank {
+  font-family: var(--font-mono);
+  font-size: var(--fs-xs);
+  letter-spacing: var(--ls-wide);
+  text-transform: uppercase;
+  color: var(--neon-gold);
+  border: 1px solid var(--color-graphite-600);
+  border-radius: var(--radius-pill);
+  padding: 2px var(--space-3);
+}
+
+/* ---------- Conteúdo ---------- */
+.quest__title {
+  margin: 0;
+  font-size: var(--fs-lg);
+  color: var(--color-paper);
+}
+
+.quest__desc {
+  margin: 0;
+  font-size: var(--fs-sm);
+  color: var(--color-ash);
+}
+
+.quest__objectives {
+  margin: var(--space-2) 0 0;
+  padding: 0;
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+
+.quest__objectives li {
+  position: relative;
+  padding-left: var(--space-6);
+  font-family: var(--font-mono);
+  font-size: var(--fs-xs);
+  color: var(--color-smoke);
+}
+
+/* Marcador de objetivo (checkbox de quest) */
+.quest__objectives li::before {
+  content: "▸";
+  position: absolute;
+  left: 0;
+  color: var(--neon-cyan);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .quest__pulse {
+    animation: none;
+  }
+}
+
+@keyframes quest-pulse {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50%      { opacity: 0.4; transform: scale(0.85); }
+}
