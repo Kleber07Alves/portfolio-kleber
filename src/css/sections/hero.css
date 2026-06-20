@@ -1,65 +1,60 @@
 /* ============================================================
    SECTIONS / HERO.CSS
-   Primeira dobra — "menu inicial do jogo".
-   Layout flex centralizado, background grid cyber + vinheta.
+   Primeira dobra — cenário "overworld" do Mario: céu suave,
+   nuvens, colinas e alguns props flutuantes (? block, moeda,
+   estrela). Limpo, claro e acolhedor.
    ============================================================ */
 
 .hero {
   position: relative;
   display: flex;
   align-items: center;
-  min-height: calc(100svh - 64px); /* desconta a navbar fixa */
+  min-height: calc(100svh - 64px);
   overflow: hidden;
-  isolation: isolate; /* mantem o backdrop atras do conteudo */
+  isolation: isolate;
+  background: var(--gradient-sky);
 }
 
-/* ---------- Background: grid cyber + vinheta ---------- */
+/* ---------- Cenário de fundo (decorativo) ---------- */
 .hero__backdrop {
   position: absolute;
   inset: 0;
   z-index: var(--z-bg);
-  background-color: var(--color-void);
-
-  /* Grid cyber: duas camadas de linhas finas */
-  background-image:
-    linear-gradient(rgba(0, 229, 255, 0.06) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(0, 229, 255, 0.06) 1px, transparent 1px);
-  background-size: 48px 48px;
-  background-position: center;
+  pointer-events: none;
 }
 
-/* Vinheta: escurece as bordas para dar profundidade */
-.hero__backdrop::after {
-  content: "";
+/* Colinas no rodapé do hero */
+.hero__hills {
   position: absolute;
-  inset: 0;
-  background:
-    radial-gradient(
-      ellipse at center,
-      transparent 0%,
-      rgba(5, 5, 7, 0.55) 70%,
-      var(--color-void) 100%
-    );
+  inset: auto 0 0 0;
+  width: 100%;
+  height: clamp(120px, 22vh, 240px);
 }
 
-/* Brilho ambiente sutil (magenta/azul) atras do titulo */
-.hero__backdrop::before {
-  content: "";
+/* Nuvens */
+.hero__cloud {
   position: absolute;
-  top: 30%;
-  left: 50%;
-  width: min(600px, 80vw);
-  height: min(600px, 80vw);
-  transform: translate(-50%, -50%);
-  background: radial-gradient(
-    circle,
-    rgba(212, 0, 255, 0.18) 0%,
-    transparent 60%
-  );
-  filter: blur(40px);
+  color: #fff;
+  opacity: 0.95;
+  filter: drop-shadow(0 6px 10px rgba(62, 120, 178, 0.10));
 }
+.hero__cloud svg { display: block; }
+.hero__cloud--1 { top: 16%; left: 8%;  width: 130px; animation: hero-drift 22s ease-in-out infinite; }
+.hero__cloud--2 { top: 26%; right: 12%; width: 170px; animation: hero-drift 28s ease-in-out infinite reverse; }
+.hero__cloud--3 { top: 52%; left: 18%; width: 96px;  opacity: 0.8; animation: hero-drift 25s ease-in-out infinite; }
 
-/* ---------- Conteudo ---------- */
+/* Props temáticos (blocos, moeda, estrela) */
+.hero__prop {
+  position: absolute;
+  display: grid;
+  place-items: center;
+}
+.hero__prop svg { display: block; width: 100%; height: 100%; }
+.hero__prop--block { top: 22%; right: 22%; width: 58px; height: 58px; animation: hero-float 6s ease-in-out infinite; }
+.hero__prop--coin  { top: 60%; right: 28%; width: 40px; height: 40px; animation: hero-float 5s ease-in-out infinite .4s; }
+.hero__prop--star  { top: 70%; left: 9%;   width: 46px; height: 46px; animation: hero-float 7s ease-in-out infinite .2s; }
+
+/* ---------- Conteúdo ---------- */
 .hero__inner {
   position: relative;
   z-index: var(--z-content);
@@ -70,46 +65,45 @@
   padding-block: var(--space-16);
 }
 
-/* Eyebrow / status "online" */
+/* Eyebrow: pílula "World 1-1" */
 .hero__eyebrow {
   display: inline-flex;
   align-items: center;
   gap: var(--space-2);
   margin: 0;
+  padding: var(--space-2) var(--space-4);
+  background-color: var(--color-graphite-900);
+  border: 1px solid var(--color-graphite-700);
+  border-radius: var(--radius-pill);
+  box-shadow: var(--shadow-sm);
   font-family: var(--font-mono);
   font-size: var(--fs-xs);
   letter-spacing: var(--ls-wide);
   text-transform: uppercase;
-  color: var(--neon-lime);
+  color: var(--color-ash);
 }
 
 .hero__status {
-  width: 8px;
-  height: 8px;
+  width: 9px;
+  height: 9px;
   border-radius: var(--radius-pill);
   background-color: var(--neon-lime);
-  box-shadow: var(--glow-lime);
-  animation: hero-blink 1.6s var(--ease-out) infinite;
 }
 
-/* ---------- Titulo com gradiente ---------- */
+/* ---------- Título com gradiente suave ---------- */
 .hero__title {
   margin: 0;
   font-size: clamp(var(--fs-3xl), 12vw, var(--fs-4xl));
   line-height: var(--lh-tight);
-}
-
-/* Reforca o glow do gradiente no titulo */
-.hero__title .text-gradient {
-  filter: drop-shadow(0 0 24px rgba(212, 0, 255, 0.35));
+  font-weight: 700;
 }
 
 .hero__role {
   margin: 0;
   font-family: var(--font-heading);
   font-size: clamp(var(--fs-md), 4vw, var(--fs-xl));
+  font-weight: 600;
   color: var(--color-paper);
-  letter-spacing: var(--ls-wide);
 }
 
 .hero__tagline {
@@ -127,20 +121,24 @@
   margin-top: var(--space-4);
 }
 
-/* ---------- Animacoes ---------- */
-@keyframes hero-blink {
-  0%,
-  100% { opacity: 1; }
-  50%  { opacity: 0.35; }
+/* ---------- Animações ---------- */
+@keyframes hero-float {
+  0%, 100% { transform: translateY(0); }
+  50%      { transform: translateY(-10px); }
+}
+
+@keyframes hero-drift {
+  0%, 100% { transform: translateX(0); }
+  50%      { transform: translateX(18px); }
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .hero__status {
+  .hero__cloud,
+  .hero__prop {
     animation: none;
   }
 }
 
-/* ---------- Responsivo: centraliza em telas maiores se desejar ---------- */
 @media (min-width: 768px) {
   .hero__inner {
     gap: var(--space-6);
