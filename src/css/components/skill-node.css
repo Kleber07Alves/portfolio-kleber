@@ -36,7 +36,8 @@
   background-color: var(--color-graphite-900);
   border: 2px solid var(--node-accent);
   color: var(--node-accent);
-  box-shadow: 0 0 0 4px rgba(5, 5, 7, 0.6); /* recorte sobre as linhas */
+  /* recorte sobre as linhas + leve elevação */
+  box-shadow: 0 0 0 4px var(--color-void), var(--shadow-sm);
   transition:
     box-shadow var(--dur-base) var(--ease-out),
     border-color var(--dur-base) var(--ease-out),
@@ -68,12 +69,12 @@
   --node-glow: var(--glow-lime);
 }
 .skill-node--mastered .skill-node__dot {
-  box-shadow: var(--glow-lime), 0 0 0 4px rgba(5, 5, 7, 0.6);
+  box-shadow: var(--glow-lime), 0 0 0 4px var(--color-void);
 }
 
-/* Em evolução — cyan, contorno aceso */
+/* Em evolução — azul, contorno aceso */
 .skill-node--unlocked {
-  --node-accent: var(--neon-cyan);
+  --node-accent: var(--neon-blue);
   --node-glow: var(--glow-cyan);
 }
 
@@ -105,7 +106,7 @@
 .skill-node.is-active .skill-node__dot {
   border-color: var(--node-accent);
   color: var(--node-accent);
-  box-shadow: var(--node-glow), 0 0 0 4px rgba(5, 5, 7, 0.6);
+  box-shadow: var(--node-glow), 0 0 0 4px var(--color-void);
 }
 
 .skill-node.is-active .skill-node__label,

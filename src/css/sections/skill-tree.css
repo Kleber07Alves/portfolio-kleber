@@ -39,8 +39,9 @@
 }
 
 .skill-legend--mastered { color: var(--neon-lime); }
-.skill-legend--mastered::before { background: var(--neon-lime); box-shadow: var(--glow-lime); }
-.skill-legend--unlocked { color: var(--neon-cyan); }
+.skill-legend--mastered::before { background: var(--neon-lime); }
+.skill-legend--unlocked { color: var(--neon-blue); }
+.skill-legend--unlocked::before { background: var(--neon-blue); }
 .skill-legend--locked   { color: var(--color-smoke); }
 .skill-legend--locked::before { border-style: dashed; }
 
@@ -73,9 +74,9 @@
 
 /* Conexão energizada (caminho até a raiz) */
 .skill-tree__link.is-active {
-  stroke: var(--neon-cyan);
+  stroke: var(--neon-blue);
   stroke-width: 3;
-  filter: drop-shadow(0 0 6px rgba(0, 229, 255, 0.7));
+  filter: drop-shadow(0 2px 4px rgba(62, 120, 178, 0.35));
 }
 
 /* ---------- Tiers (desktop) ---------- */
