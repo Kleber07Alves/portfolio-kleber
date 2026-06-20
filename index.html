@@ -9,7 +9,7 @@
   <meta name="title" content="Kleber — Dev Portfolio | Super Mario Dark Mode Futurista" />
   <meta name="description" content="Portfólio de desenvolvimento de Kleber: atributos, skill tree e projetos numa estética dark mode futurista inspirada no universo Super Mario." />
   <meta name="author" content="Kleber" />
-  <meta name="theme-color" content="#050507" />
+  <meta name="theme-color" content="#CFE8FB" />
 
   <!-- Open Graph / Facebook -->
   <meta property="og:type" content="website" />
@@ -36,7 +36,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link
     rel="stylesheet"
-    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&family=Orbitron:wght@600;700;800&family=Press+Start+2P&display=swap"
+    href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap"
   />
 
   <!-- Styles (orquestrador único) -->
@@ -50,7 +50,9 @@
   <header class="site-header" id="top">
     <nav class="navbar container" aria-label="Navegação principal">
       <a class="navbar__brand" href="#top">
-        <span class="navbar__avatar" aria-hidden="true">K</span>
+        <span class="navbar__avatar" aria-hidden="true">
+          <svg viewBox="0 0 24 24"><path d="M4 12a8 8 0 0 1 16 0z" fill="#fff"/><circle cx="9" cy="8.7" r="1.6" fill="#E25C4B"/><circle cx="15.3" cy="8.2" r="1.1" fill="#E25C4B"/><path d="M9.2 12h5.6v3.4a2.8 2.8 0 0 1-5.6 0z" fill="#FBE9CF"/></svg>
+        </span>
         <span class="navbar__name">Kleber</span>
       </a>
 
@@ -83,13 +85,41 @@
   <main>
     <!-- ============================== HERO ============================== -->
     <section class="hero" id="hero" aria-labelledby="hero-title">
-      <!-- Camada de fundo: grid cyber + vinheta (decorativa) -->
-      <div class="hero__backdrop" aria-hidden="true"></div>
+      <!-- Cenário overworld do Mario (decorativo) -->
+      <div class="hero__backdrop" aria-hidden="true">
+        <!-- Nuvens -->
+        <span class="hero__cloud hero__cloud--1">
+          <svg viewBox="0 0 128 64"><path fill="currentColor" d="M104 60H32a20 20 0 0 1-3-39.8 28 28 0 0 1 52-7.2A20 20 0 0 1 110 28a16 16 0 0 1-6 32z"/></svg>
+        </span>
+        <span class="hero__cloud hero__cloud--2">
+          <svg viewBox="0 0 128 64"><path fill="currentColor" d="M104 60H32a20 20 0 0 1-3-39.8 28 28 0 0 1 52-7.2A20 20 0 0 1 110 28a16 16 0 0 1-6 32z"/></svg>
+        </span>
+        <span class="hero__cloud hero__cloud--3">
+          <svg viewBox="0 0 128 64"><path fill="currentColor" d="M104 60H32a20 20 0 0 1-3-39.8 28 28 0 0 1 52-7.2A20 20 0 0 1 110 28a16 16 0 0 1-6 32z"/></svg>
+        </span>
+
+        <!-- Props flutuantes -->
+        <span class="hero__prop hero__prop--block">
+          <svg viewBox="0 0 48 48"><rect x="3" y="3" width="42" height="42" rx="9" fill="#E9A93C" stroke="#C5862A" stroke-width="2"/><circle cx="9" cy="9" r="1.8" fill="#C5862A"/><circle cx="39" cy="9" r="1.8" fill="#C5862A"/><circle cx="9" cy="39" r="1.8" fill="#C5862A"/><circle cx="39" cy="39" r="1.8" fill="#C5862A"/><text x="24" y="33" text-anchor="middle" font-family="Fredoka, sans-serif" font-size="26" font-weight="700" fill="#fff">?</text></svg>
+        </span>
+        <span class="hero__prop hero__prop--coin">
+          <svg viewBox="0 0 40 40"><circle cx="20" cy="20" r="18" fill="#F4C152" stroke="#E09A2A" stroke-width="2"/><ellipse cx="20" cy="20" rx="6.5" ry="10" fill="none" stroke="#E09A2A" stroke-width="2.5"/></svg>
+        </span>
+        <span class="hero__prop hero__prop--star">
+          <svg viewBox="0 0 48 48"><path d="M24 3l6.3 12.8 14.1 2.1-10.2 9.9 2.4 14L24 35.3 11.4 41.9l2.4-14L3.6 17.9l14.1-2.1z" fill="#F4C152" stroke="#E09A2A" stroke-width="2" stroke-linejoin="round"/></svg>
+        </span>
+
+        <!-- Colinas -->
+        <svg class="hero__hills" viewBox="0 0 1440 240" preserveAspectRatio="none">
+          <path d="M0 240V150c220-70 360 30 560 10S1180 80 1440 140v100z" fill="#7FBF95"/>
+          <path d="M0 240V182c260-60 420 18 700 0s520-58 740-12v72z" fill="#57A773"/>
+        </svg>
+      </div>
 
       <div class="hero__inner container">
         <p class="hero__eyebrow">
           <span class="hero__status" aria-hidden="true"></span>
-          PLAYER 01 — ONLINE
+          WORLD 1-1 · BEM-VINDO
         </p>
 
         <h1 class="hero__title" id="hero-title">
@@ -114,7 +144,10 @@
     <section class="attributes" id="atributos" aria-labelledby="atributos-title">
       <div class="container">
         <header class="section-head" data-reveal>
-          <p class="section-head__eyebrow">// CHARACTER SHEET</p>
+          <p class="section-head__eyebrow">
+            <span class="section-head__icon"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="10" fill="#F4C152" stroke="#E09A2A" stroke-width="1.6"/><ellipse cx="12" cy="12" rx="3.6" ry="5.6" fill="none" stroke="#E09A2A" stroke-width="1.6"/></svg></span>
+            Character Sheet
+          </p>
           <h2 class="section-head__title" id="atributos-title">Atributos</h2>
           <p class="section-head__lead">
             Minha ficha de personagem — os pilares que definem como penso,
@@ -136,7 +169,10 @@
     <section class="skill-tree" id="skill-tree" aria-labelledby="skill-tree-title">
       <div class="container">
         <header class="section-head" data-reveal>
-          <p class="section-head__eyebrow">// PROGRESSION MAP</p>
+          <p class="section-head__eyebrow">
+            <span class="section-head__icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2l3 6.3 6.9 1-5 4.8 1.2 6.9L12 17.8 5.9 21l1.2-6.9-5-4.8 6.9-1z" fill="#F4C152" stroke="#E09A2A" stroke-width="1.4" stroke-linejoin="round"/></svg></span>
+            Progression Map
+          </p>
           <h2 class="section-head__title" id="skill-tree-title">Skill Tree</h2>
           <p class="section-head__lead">
             Meu mapa de progressão técnica. Passe o mouse (ou toque) num nó
@@ -171,7 +207,10 @@
     <section class="projects" id="projects" aria-labelledby="projects-title">
       <div class="container">
         <header class="section-head" data-reveal>
-          <p class="section-head__eyebrow">// QUEST LOG</p>
+          <p class="section-head__eyebrow">
+            <span class="section-head__icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 21V3" fill="none" stroke="#4C5A6A" stroke-width="2" stroke-linecap="round"/><path d="M6 4h12l-3 4 3 4H6z" fill="#57A773" stroke="#3E8159" stroke-width="1.2" stroke-linejoin="round"/></svg></span>
+            Quest Log
+          </p>
           <h2 class="section-head__title" id="projects-title">Missões Atuais</h2>
           <p class="section-head__lead">
             Quests em andamento — desafios técnicos que estou enfrentando agora.
@@ -256,7 +295,10 @@
     <section class="contact" id="contact" aria-labelledby="contact-title">
       <div class="container">
         <header class="section-head" data-reveal>
-          <p class="section-head__eyebrow">// CONNECT</p>
+          <p class="section-head__eyebrow">
+            <span class="section-head__icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12a8 8 0 0 1 16 0z" fill="#E25C4B"/><path d="M9 12h6v3.5a3 3 0 0 1-6 0z" fill="#F3E2C7"/><circle cx="9" cy="8.5" r="1.7" fill="#fff"/><circle cx="15.5" cy="8" r="1.2" fill="#fff"/></svg></span>
+            Connect
+          </p>
           <h2 class="section-head__title" id="contact-title">Contato</h2>
           <p class="section-head__lead">
             Bora trocar ideia, somar em projetos ou só falar de tecnologia?
