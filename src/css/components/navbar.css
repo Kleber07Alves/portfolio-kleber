@@ -8,10 +8,11 @@
   position: fixed;
   inset: 0 0 auto 0;
   z-index: var(--z-nav);
-  background-color: rgba(10, 10, 15, 0.72); /* --color-abyss translucido */
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
+  background-color: rgba(255, 255, 255, 0.78); /* claro translucido */
+  backdrop-filter: blur(12px) saturate(1.1);
+  -webkit-backdrop-filter: blur(12px) saturate(1.1);
   border-bottom: 1px solid var(--color-graphite-700);
+  box-shadow: var(--shadow-sm);
 }
 
 /* Compensa a navbar fixa para o conteudo nao ficar escondido */
@@ -39,14 +40,17 @@ body.nav-open {
 .navbar__avatar {
   display: grid;
   place-items: center;
-  width: 36px;
-  height: 36px;
+  width: 38px;
+  height: 38px;
   border-radius: var(--radius-md);
-  background: var(--gradient-hero);
-  color: var(--color-void);
-  font-family: var(--font-display);
-  font-size: var(--fs-sm);
-  box-shadow: var(--glow-red);
+  background: var(--neon-red);
+  color: #fff;
+  box-shadow: var(--shadow-sm);
+}
+
+.navbar__avatar svg {
+  width: 24px;
+  height: 24px;
 }
 
 .navbar__name {
@@ -69,7 +73,6 @@ body.nav-open {
 .navbar__link:hover,
 .navbar__link:focus-visible {
   color: var(--color-paper);
-  text-shadow: var(--glow-cyan);
 }
 
 /* Sublinhado neon animado */
@@ -140,7 +143,7 @@ body.nav-open {
   gap: var(--space-8);
   margin: 0;
   padding: var(--space-8);
-  background-color: rgba(5, 5, 7, 0.96); /* --color-void translucido */
+  background-color: rgba(244, 248, 252, 0.97); /* claro translucido */
   backdrop-filter: blur(14px);
   -webkit-backdrop-filter: blur(14px);
 
