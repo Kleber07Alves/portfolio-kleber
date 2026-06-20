@@ -5,17 +5,31 @@
    módulos (revealOnScroll, statCounter, etc.) entram aqui.
    ============================================================ */
 
+import { initThemeMotion } from "./modules/themeMotion.js";
 import { initNavbar } from "./modules/navbar.js";
 import { initAttributes } from "./modules/attributes.js";
 import { initSkillTree } from "./modules/skillTree.js";
+import { initStatCounter } from "./modules/statCounter.js";
+import { initReveal } from "./modules/revealOnScroll.js";
+import { initCursorGlow } from "./modules/cursorGlow.js";
 
 const App = {
   init() {
+    // 1. Preferência de movimento primeiro (os demais módulos a consultam).
+    initThemeMotion();
+
+    // 2. Estrutura e conteúdo.
     this.setFooterYear();
     initNavbar();
     initAttributes();
     initSkillTree();
-    console.log("%c⚡ FASE 4 — Skill Tree montada", "color:#39FF14;font-weight:bold;");
+
+    // 3. Camada de animação e efeitos (depende do conteúdo já renderizado).
+    initStatCounter();
+    initReveal();
+    initCursorGlow();
+
+    console.log("%c⚡ FASE 5 — Animações e efeitos ativos", "color:#39FF14;font-weight:bold;");
   },
 
   /** Preenche o ano atual no footer. */
