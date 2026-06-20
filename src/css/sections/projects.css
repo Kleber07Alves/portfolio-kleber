@@ -80,8 +80,7 @@
   height: 8px;
   border-radius: var(--radius-pill);
   background-color: var(--neon-lime);
-  box-shadow: var(--glow-lime);
-  animation: quest-pulse 1.6s var(--ease-out) infinite;
+  animation: quest-pulse 2.4s var(--ease-out) infinite;
 }
 
 .quest__rank {

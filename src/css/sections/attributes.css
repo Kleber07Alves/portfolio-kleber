@@ -15,12 +15,27 @@
 }
 
 .section-head__eyebrow {
-  margin: 0 0 var(--space-2);
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  margin: 0 0 var(--space-3);
   font-family: var(--font-mono);
   font-size: var(--fs-xs);
   letter-spacing: var(--ls-wide);
   text-transform: uppercase;
-  color: var(--neon-cyan);
+  color: var(--neon-blue);
+}
+
+.section-head__icon {
+  display: inline-grid;
+  place-items: center;
+  width: 22px;
+  height: 22px;
+}
+
+.section-head__icon svg {
+  width: 100%;
+  height: 100%;
 }
 
 .section-head__title {

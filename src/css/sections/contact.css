@@ -39,8 +39,6 @@
   transform: translateY(-4px);
   border-color: var(--contact-accent);
   box-shadow: var(--contact-glow);
-  text-shadow: none;
-  animation: contact-pulse 1.4s var(--ease-out) infinite;
 }
 
 /* ---------- Ícone ---------- */
@@ -106,19 +104,12 @@
 }
 
 /* ---------- Acentos por rede ---------- */
+.contact__link--github {
+  --contact-accent: var(--neon-red);
+  --contact-glow: var(--glow-red);
+}
+
 .contact__link--linkedin {
   --contact-accent: var(--neon-blue);
-  --contact-glow: 0 0 8px rgba(46, 91, 255, .6), 0 0 24px rgba(46, 91, 255, .4);
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .contact__link:hover,
-  .contact__link:focus-visible {
-    animation: none;
-  }
-}
-
-@keyframes contact-pulse {
-  0%, 100% { box-shadow: var(--contact-glow); }
-  50%      { box-shadow: none; }
+  --contact-glow: 0 8px 22px rgba(62, 120, 178, .30);
 }
