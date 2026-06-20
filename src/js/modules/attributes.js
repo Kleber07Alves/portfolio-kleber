@@ -24,14 +24,17 @@ function cardTemplate(attr) {
     .map((tag) => `<li class="badge">${escapeHtml(tag)}</li>`)
     .join("");
 
+  const value = Number(attr.value);
+
   // attr.icon e SVG confiavel definido em data/attributes.js (nao escapar).
+  // Numeros usam data-count-to para o statCounter animar de 0 ao alvo.
   return `
-    <article class="card card--${accent}" role="listitem">
+    <article class="card card--${accent}" role="listitem" data-reveal>
       <div class="card__head">
         <span class="card__icon" aria-hidden="true">${attr.icon}</span>
         <div class="card__heading">
           <h3 class="card__title">${escapeHtml(attr.title)}</h3>
-          <span class="card__level">LV ${escapeHtml(attr.value)}</span>
+          <span class="card__level">LV <span class="js-count" data-count-to="${value}">${value}</span></span>
         </div>
       </div>
 
@@ -40,14 +43,15 @@ function cardTemplate(attr) {
       <div class="stat">
         <div class="stat__meta">
           <span class="stat__label">XP</span>
-          <span class="stat__value">${escapeHtml(attr.value)} / 100</span>
+          <span class="stat__value"><span class="js-count" data-count-to="${value}">${value}</span> / 100</span>
         </div>
         <div class="stat__track">
           <div
             class="stat__fill stat__fill--${accent}"
-            style="--val: ${Number(attr.value)}%"
+            style="--val: ${value}%"
+            data-fill-to="${value}"
             role="progressbar"
-            aria-valuenow="${Number(attr.value)}"
+            aria-valuenow="${value}"
             aria-valuemin="0"
             aria-valuemax="100"
             aria-label="Nível de ${escapeHtml(attr.title)}"
