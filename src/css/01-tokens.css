@@ -1,62 +1,74 @@
 /* ============================================================
    01-TOKENS.CSS
-   Design tokens — Single Source of Truth de cores, tipografia,
-   espaçamento, raios e camadas. Nenhum hex cru deve existir
-   fora deste arquivo.
+   Design tokens — Single Source of Truth.
+   Tema: "Mario Overworld" — claro, suave, limpo e moderno.
+   Paleta Mario suavizada (vermelho/azul/dourado/verde) sobre
+   superfícies claras, com sombras leves no lugar de neons.
    ============================================================ */
 
 :root {
-  /* ---------- BASE: Preto / Grafite ---------- */
-  --color-void:          #050507; /* Fundo absoluto (body) */
-  --color-abyss:         #0A0A0F; /* Fundo de seções */
-  --color-graphite-900:  #101018; /* Superfície elevada nível 1 */
-  --color-graphite-800:  #16161F; /* Superfície elevada nível 2 / hover */
-  --color-graphite-700:  #1F1F2B; /* Bordas internas / divisores */
-  --color-graphite-600:  #2A2A38; /* Bordas de destaque / outlines */
-  --color-smoke:         #6B6B7B; /* Texto secundário / legendas */
-  --color-ash:           #A8A8B8; /* Texto de corpo */
-  --color-paper:         #EDEDF2; /* Títulos / alta ênfase */
+  /* ---------- SUPERFÍCIES (claras, calmas) ---------- */
+  --color-void:          #F4F8FC; /* Fundo base do site (céu pálido) */
+  --color-abyss:         #EAF2FB; /* Fundo de seções alternadas */
+  --color-graphite-900:  #FFFFFF; /* Superfície de cards (nível 1) */
+  --color-graphite-800:  #F1F6FB; /* Superfície elevada / ícones / hover */
+  --color-graphite-700:  #E2EAF2; /* Bordas e divisores */
+  --color-graphite-600:  #CDD8E4; /* Bordas de destaque / outlines */
+  --color-smoke:         #8A97A6; /* Texto secundário / legendas */
+  --color-ash:           #4C5A6A; /* Texto de corpo */
+  --color-paper:         #1E2A38; /* Títulos / alta ênfase (ardósia) */
 
-  /* ---------- NEONS: Acentos futuristas ---------- */
-  --neon-red:      #FF2D55; /* CTA primário, energia */
-  --neon-cyan:     #00E5FF; /* Links, foco, highlights */
-  --neon-lime:     #39FF14; /* Sucesso, XP, status online */
-  --neon-gold:     #FFD60A; /* Conquistas, ratings */
-  --neon-magenta:  #D400FF; /* Skill tree, gradientes */
-  --neon-blue:     #2E5BFF; /* Acento secundário, profundidade */
+  /* ---------- ACENTOS MARIO (suaves) ----------
+     Mantém os nomes --neon-* por compatibilidade do design system,
+     mas agora são tons calmos do universo Mario. */
+  --neon-red:      #E25C4B; /* Cap do Mario — CTA primário, energia */
+  --neon-cyan:     #3E9BC9; /* Power-up água — links, foco, destaque */
+  --neon-lime:     #57A773; /* Cano / 1-UP — sucesso, XP, progresso */
+  --neon-gold:     #E9A93C; /* Moeda / estrela — conquistas, ratings */
+  --neon-magenta:  #8E7DD6; /* Acento lúdico suave — usado com parcimônia */
+  --neon-blue:     #3E78B2; /* Macacão do Mario — acento secundário */
 
-  /* ---------- GRADIENTES ---------- */
-  --gradient-hero:  linear-gradient(135deg, #FF2D55 0%, #D400FF 50%, #2E5BFF 100%);
-  --gradient-cyber: linear-gradient(90deg, #00E5FF 0%, #39FF14 100%);
-  --gradient-coin:  linear-gradient(180deg, #FFD60A 0%, #FF8A00 100%);
+  /* ---------- GRADIENTES (suaves) ---------- */
+  --gradient-hero:  linear-gradient(120deg, #E25C4B 0%, #E9A93C 48%, #3E78B2 100%);
+  --gradient-cyber: linear-gradient(90deg, #3E9BC9 0%, #57A773 100%);
+  --gradient-coin:  linear-gradient(180deg, #F4C152 0%, #E09A2A 100%);
+  --gradient-sky:   linear-gradient(180deg, #CFE8FB 0%, #EAF4FC 60%, #F4F8FC 100%);
 
-  /* ---------- GLOWS (sombras neon) ---------- */
-  --glow-red:   0 0 8px rgba(255, 45, 85, .6),  0 0 24px rgba(255, 45, 85, .35);
-  --glow-cyan:  0 0 8px rgba(0, 229, 255, .6),  0 0 24px rgba(0, 229, 255, .35);
-  --glow-lime:  0 0 8px rgba(57, 255, 20, .55), 0 0 24px rgba(57, 255, 20, .3);
-  --glow-gold:  0 0 8px rgba(255, 214, 10, .6), 0 0 24px rgba(255, 214, 10, .35);
+  /* ---------- SOMBRAS (elevação suave e limpa) ---------- */
+  --shadow-sm: 0 1px 2px rgba(30, 42, 56, .06), 0 1px 3px rgba(30, 42, 56, .07);
+  --shadow-md: 0 4px 14px rgba(30, 42, 56, .08), 0 2px 5px rgba(30, 42, 56, .05);
+  --shadow-lg: 0 16px 36px rgba(30, 42, 56, .12), 0 6px 12px rgba(30, 42, 56, .07);
 
-  /* ---------- TIPOGRAFIA: Famílias ---------- */
-  --font-display: "Press Start 2P", "Orbitron", monospace;
-  --font-heading: "Orbitron", sans-serif;
-  --font-body:    "Inter", "Rajdhani", system-ui, sans-serif;
-  --font-mono:    "JetBrains Mono", monospace;
+  /* ---------- "GLOWS" — agora sombras coloridas suaves ----------
+     Hover de acento: elevação com leve tom da cor, sem neon. */
+  --glow-red:  0 8px 22px rgba(226, 92, 75, .28);
+  --glow-cyan: 0 8px 22px rgba(62, 155, 201, .28);
+  --glow-lime: 0 8px 22px rgba(87, 167, 115, .28);
+  --glow-gold: 0 8px 22px rgba(233, 169, 60, .30);
+
+  /* ---------- TIPOGRAFIA: Famílias ----------
+     Fredoka (arredondada, amigável, moderna — clima Mario sem ser
+     futurista) para títulos; Inter para corpo; mono p/ rótulos. */
+  --font-display: "Fredoka", "Baloo 2", system-ui, sans-serif;
+  --font-heading: "Fredoka", system-ui, sans-serif;
+  --font-body:    "Inter", system-ui, sans-serif;
+  --font-mono:    "JetBrains Mono", ui-monospace, monospace;
 
   /* ---------- TIPOGRAFIA: Escala modular (ratio 1.25) ---------- */
-  --fs-xs:   0.64rem;   /* ~10.24px — labels, tags */
-  --fs-sm:   0.8rem;    /* ~12.8px  — legendas */
-  --fs-base: 1rem;      /* 16px     — corpo */
-  --fs-md:   1.25rem;   /* 20px     — destaque de corpo */
-  --fs-lg:   1.563rem;  /* ~25px    — H4 */
-  --fs-xl:   1.953rem;  /* ~31.25px — H3 */
-  --fs-2xl:  2.441rem;  /* ~39px    — H2 */
-  --fs-3xl:  3.052rem;  /* ~48.8px  — H1 */
-  --fs-4xl:  3.815rem;  /* ~61px    — Hero display */
+  --fs-xs:   0.64rem;
+  --fs-sm:   0.8rem;
+  --fs-base: 1rem;
+  --fs-md:   1.25rem;
+  --fs-lg:   1.563rem;
+  --fs-xl:   1.953rem;
+  --fs-2xl:  2.441rem;
+  --fs-3xl:  3.052rem;
+  --fs-4xl:  3.815rem;
 
   /* ---------- TIPOGRAFIA: Line-height & tracking ---------- */
-  --lh-tight: 1.1;
-  --lh-base:  1.6;
-  --ls-wide:  0.08em;
+  --lh-tight: 1.12;
+  --lh-base:  1.65;
+  --ls-wide:  0.04em; /* tracking mais discreto (menos "techy") */
 
   /* ---------- ESPAÇAMENTO (base 8px) ---------- */
   --space-1:  0.25rem;
@@ -69,10 +81,10 @@
   --space-16: 4rem;
   --space-24: 6rem;
 
-  /* ---------- RAIOS ---------- */
-  --radius-sm:   4px;
-  --radius-md:   10px;
-  --radius-lg:   18px;
+  /* ---------- RAIOS (mais arredondados, amigáveis) ---------- */
+  --radius-sm:   6px;
+  --radius-md:   12px;
+  --radius-lg:   20px;
   --radius-pill: 999px;
 
   /* ---------- Z-INDEX (camadas) ---------- */
@@ -86,9 +98,9 @@
   --container-max: 1200px;
   --container-pad: clamp(1rem, 5vw, 3rem);
 
-  /* ---------- MOTION (transições padrão) ---------- */
-  --ease-out:   cubic-bezier(.2, .8, .2, 1);
-  --dur-fast:   180ms;
-  --dur-base:   220ms;
-  --dur-slow:   500ms;
+  /* ---------- MOTION ---------- */
+  --ease-out: cubic-bezier(.2, .8, .2, 1);
+  --dur-fast: 180ms;
+  --dur-base: 220ms;
+  --dur-slow: 500ms;
 }
