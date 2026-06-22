@@ -22,20 +22,18 @@
 @import url("./04-utilities.css");
 
 /* ------------------------------------------------------------
-   COMPONENTES — descomentar conforme criados:
+   COMPONENTES
    ------------------------------------------------------------ */
+@import url("./components/section-head.css");
 @import url("./components/navbar.css");
 @import url("./components/button.css");
-@import url("./components/card.css");
-@import url("./components/badge.css");
-@import url("./components/stat-bar.css");
 @import url("./components/skill-node.css");
 
 /* ------------------------------------------------------------
-   SEÇÕES — descomentar conforme criadas:
+   SEÇÕES
    ------------------------------------------------------------ */
 @import url("./sections/hero.css");
-@import url("./sections/attributes.css");
 @import url("./sections/skill-tree.css");
 @import url("./sections/projects.css");
+@import url("./sections/journey.css");
 @import url("./sections/contact.css");
