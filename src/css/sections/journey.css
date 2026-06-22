@@ -1,0 +1,138 @@
+/* ============================================================
+   SECTIONS / JOURNEY.CSS  (Jornada Acadêmica — FATEC)
+   Dois painéis limpos: matérias concluídas e a cursar. As
+   matérias são "chips" coletáveis, com sutileza de game.
+   ============================================================ */
+
+.journey {
+  background-color: var(--color-void);
+}
+
+.journey__grid {
+  display: grid;
+  gap: var(--space-8);
+  grid-template-columns: repeat(auto-fit, minmax(min(320px, 100%), 1fr));
+}
+
+/* ---------- Painel ---------- */
+.panel {
+  --p-accent: var(--neon-lime);
+
+  display: flex;
+  flex-direction: column;
+  padding: var(--space-6);
+  background-color: var(--color-graphite-900);
+  border: 1px solid var(--color-graphite-700);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-sm);
+}
+
+.panel--todo {
+  --p-accent: var(--color-smoke);
+}
+
+/* Cabeçalho do painel */
+.panel__head {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  margin-bottom: var(--space-6);
+  padding-bottom: var(--space-4);
+  border-bottom: 1px solid var(--color-graphite-700);
+}
+
+.panel__icon {
+  display: grid;
+  place-items: center;
+  width: 40px;
+  height: 40px;
+  flex-shrink: 0;
+  border-radius: var(--radius-md);
+  background-color: color-mix(in srgb, var(--p-accent) 14%, #fff);
+  color: var(--p-accent);
+}
+
+.panel__icon svg {
+  width: 22px;
+  height: 22px;
+}
+
+.panel__title {
+  flex: 1;
+  margin: 0;
+  font-size: var(--fs-lg);
+}
+
+.panel__count {
+  font-family: var(--font-mono);
+  font-size: var(--fs-sm);
+  font-weight: 500;
+  color: var(--p-accent);
+  background-color: color-mix(in srgb, var(--p-accent) 12%, #fff);
+  border: 1px solid color-mix(in srgb, var(--p-accent) 30%, #fff);
+  border-radius: var(--radius-pill);
+  padding: 2px var(--space-3);
+}
+
+/* ---------- Lista de matérias (chips) ---------- */
+.panel__list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.subject {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  padding: var(--space-2) var(--space-3);
+  font-size: var(--fs-sm);
+  border-radius: var(--radius-md);
+  transition: transform var(--dur-fast) var(--ease-out);
+}
+
+.subject::before {
+  font-size: 0.85em;
+  line-height: 1;
+}
+
+/* Concluídas: tom verde suave com check */
+.panel--done .subject {
+  background-color: color-mix(in srgb, var(--neon-lime) 10%, #fff);
+  border: 1px solid color-mix(in srgb, var(--neon-lime) 28%, #fff);
+  color: var(--color-paper);
+}
+
+.panel--done .subject::before {
+  content: "✓";
+  color: var(--neon-lime);
+  font-weight: 700;
+}
+
+/* A cursar: tom neutro tracejado (ainda bloqueado) */
+.panel--todo .subject {
+  background-color: var(--color-graphite-800);
+  border: 1px dashed var(--color-graphite-600);
+  color: var(--color-smoke);
+}
+
+.panel--todo .subject::before {
+  content: "";
+  width: 6px;
+  height: 6px;
+  border-radius: var(--radius-pill);
+  border: 1.5px solid var(--color-graphite-600);
+}
+
+.subject:hover {
+  transform: translateY(-2px);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .subject {
+    transition: none;
+  }
+}
