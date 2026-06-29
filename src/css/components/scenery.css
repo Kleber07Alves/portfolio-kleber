@@ -1,0 +1,62 @@
+/* ============================================================
+   COMPONENTS / SCENERY.CSS
+   Cenário decorativo sutil nas seções internas (moedas, estrelas,
+   blocos flutuando nas laterais), dando a sensação de "fases" do
+   mesmo jogo. Injetado por modules/scenery.js. Reaproveita as
+   keyframes de animação do hero (hero-float / hero-twinkle).
+   ============================================================ */
+
+/* A seção que recebe cenário vira contexto de posicionamento e
+   recorta o que passar das bordas; o conteúdo fica acima. */
+.has-scenery {
+  position: relative;
+  overflow: hidden;
+}
+
+.has-scenery > .container {
+  position: relative;
+  z-index: var(--z-content);
+}
+
+/* Camada decorativa atrás do conteúdo */
+.scenery {
+  position: absolute;
+  inset: 0;
+  z-index: var(--z-bg);
+  pointer-events: none;
+}
+
+.scenery__item {
+  position: absolute;
+  opacity: 0.16;
+}
+
+.scenery__item svg {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+/* Animações reaproveitadas; duração/atraso vêm via custom props */
+.scenery__item--float {
+  animation: hero-float var(--sd, 5s) ease-in-out infinite;
+  animation-delay: var(--sdelay, 0s);
+}
+
+.scenery__item--twinkle {
+  animation: hero-twinkle var(--sd, 2.6s) ease-in-out infinite;
+  animation-delay: var(--sdelay, 0s);
+}
+
+/* No mobile há pouco espaço lateral — mantém a leitura limpa */
+@media (max-width: 767px) {
+  .scenery {
+    display: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .scenery__item {
+    animation: none;
+  }
+}
