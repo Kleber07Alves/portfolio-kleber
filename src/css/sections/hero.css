@@ -50,9 +50,11 @@
   place-items: center;
 }
 .hero__prop svg { display: block; width: 100%; height: 100%; }
-.hero__prop--block { top: 22%; right: 22%; width: 58px; height: 58px; animation: hero-float 6s ease-in-out infinite; }
-.hero__prop--coin  { top: 60%; right: 28%; width: 40px; height: 40px; animation: hero-float 5s ease-in-out infinite .4s; }
-.hero__prop--star  { top: 70%; left: 9%;   width: 46px; height: 46px; animation: hero-float 7s ease-in-out infinite .2s; }
+.hero__prop--block { top: 22%; right: 22%; width: 58px; height: 58px; animation: hero-float 4.2s ease-in-out infinite; }
+.hero__prop--coin  { top: 60%; right: 28%; width: 40px; height: 40px; animation: hero-float 3.4s ease-in-out infinite .3s; }
+/* A moeda gira periodicamente (efeito de flip estilo Mario) */
+.hero__prop--coin svg { animation: hero-coin-spin 4.5s ease-in-out infinite; }
+.hero__prop--star  { top: 38%; right: 10%; width: 46px; height: 46px; animation: hero-twinkle 2.4s ease-in-out infinite .2s; }
 
 /* ---------- Conteúdo ---------- */
 .hero__inner {
@@ -121,20 +123,36 @@
   margin-top: var(--space-4);
 }
 
-/* ---------- Animações ---------- */
+/* ---------- Animações (reaproveitadas pelo cenário das seções) ---------- */
+
+/* Flutuação vertical (bobbing) — amplitude nítida e charmosa */
 @keyframes hero-float {
   0%, 100% { transform: translateY(0); }
-  50%      { transform: translateY(-10px); }
+  50%      { transform: translateY(-18px); }
 }
 
+/* Deslocamento lateral das nuvens (sutil) */
 @keyframes hero-drift {
   0%, 100% { transform: translateX(0); }
-  50%      { transform: translateX(18px); }
+  50%      { transform: translateX(26px); }
+}
+
+/* Pulsar/piscar das estrelas */
+@keyframes hero-twinkle {
+  0%, 100% { transform: scale(1);    opacity: 1; }
+  50%      { transform: scale(1.22); opacity: 0.6; }
+}
+
+/* Giro periódico da moeda (flip horizontal estilo Mario) */
+@keyframes hero-coin-spin {
+  0%, 55% { transform: rotateY(0deg); }
+  100%    { transform: rotateY(360deg); }
 }
 
 @media (prefers-reduced-motion: reduce) {
   .hero__cloud,
-  .hero__prop {
+  .hero__prop,
+  .hero__prop svg {
     animation: none;
   }
 }
