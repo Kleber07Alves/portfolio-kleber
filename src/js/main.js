@@ -7,6 +7,7 @@
 import { initThemeMotion } from "./modules/themeMotion.js";
 import { initNavbar } from "./modules/navbar.js";
 import { initSkillTree } from "./modules/skillTree.js";
+import { initScenery } from "./modules/scenery.js";
 import { initReveal } from "./modules/revealOnScroll.js";
 
 const App = {
@@ -18,6 +19,7 @@ const App = {
     this.setFooterYear();
     initNavbar();
     initSkillTree();
+    initScenery();
 
     // 3. Camada de animação e efeitos (depende do conteúdo já renderizado).
     initReveal();
